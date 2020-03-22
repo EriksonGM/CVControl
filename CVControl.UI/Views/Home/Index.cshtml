@@ -16,13 +16,21 @@
         }
 
         #app {
-            /*background-color: #f0f0f0;*/
+            background: url(../../Asserts/img/undraw_posting_photo.svg);
+            background-position: bottom right;
+            background-size: 20%;
+            background-repeat:no-repeat;
             height: 100vh;
             width: 100vw;
         }
 
         .video {
             height: 400px;
+        }
+
+        .video iframe {
+            height: 100% !important;
+            width: 80% !important;
         }
 
         .bottom-2 {
@@ -55,14 +63,14 @@
             <header class="pt-3">
                 <h3 class="text-capitalize font-weight-bold"> Ministério da Saúde ( MINSA ) </h3>
             </header>
-            <div class="row">
+            <div class="row mt-3">
                 <div class="container routing">
                     <div class="row">
                         <div class="col-md-12 ">
-                            <div class="video overflow-hidden position-relative">
-                                @*<iframe width="560" height="315" src="https://www.youtube.com/embed/eYN8YxZKfqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*@
-                                <img src="~/Asserts/img/undraw_filing_system_b5d2.svg" class="h-100 w-100" />
-                                <button class="play position-absolute"></button>
+                            <div class="video d-flex overflow-hidden justify-content-center position-relative">
+                                <iframe src="https://www.youtube.com/embed/pzgZpXGmzFI?autoplay=1&modestbranding=1&rel=0&theme=light&fs=0&autohide=0&controls=0&disablekb=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                @*<img src="~/Asserts/img/undraw_filing_system_b5d2.svg" class="h-100 w-100" />*@
+                                @*<button class="play position-absolute"></button>*@
                             </div>
                         </div>
                         <div class="col-md-12">
