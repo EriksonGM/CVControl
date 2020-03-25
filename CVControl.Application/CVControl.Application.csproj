@@ -55,12 +55,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Mappers\EstadoCivilProfile.cs" />
+    <Compile Include="Mappers\RespostaProfile.cs" />
+    <Compile Include="Mappers\ResultadoProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CVControl.Data\CVControl.Data.csproj">
+      <Project>{60db46fd-5135-4543-879e-43e9d74721ea}</Project>
+      <Name>CVControl.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CVControl.Model\CVControl.Model.csproj">
+      <Project>{c456b3e8-5975-47a8-8bb4-671fe12be51b}</Project>
+      <Name>CVControl.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

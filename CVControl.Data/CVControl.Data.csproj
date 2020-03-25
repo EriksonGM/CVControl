@@ -54,6 +54,11 @@
   <ItemGroup>
     <Compile Include="DataContext.cs" />
     <Compile Include="Entidades\EstadoCivil.cs" />
+    <Compile Include="Entidades\Genero.cs" />
+    <Compile Include="Entidades\Municipio.cs" />
+    <Compile Include="Entidades\Pergunta.cs" />
+    <Compile Include="Entidades\Provincia.cs" />
+    <Compile Include="Entidades\Resposta.cs" />
     <Compile Include="Entidades\Resultado.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

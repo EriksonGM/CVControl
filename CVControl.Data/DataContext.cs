@@ -6,6 +6,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CVControl.Data.Entidades;
 
 namespace CVControl.Data
 {
@@ -71,5 +72,14 @@ namespace CVControl.Data
                     );
             }
         }
+
+        public DbSet<EstadoCivil> EstadosCivis { get; set; }
+        public DbSet<Resultado> Resultados { get; set; }
+
+        //public DbSet<Pergunta> Perguntas { get; set; }
+        //public DbSet<Resposta> Respuestas { get; set; }
+        public DbSet<Provincia> Provincias { get; set; }
+        public DbSet<Municipio> Municipios { get; set; }
+        public DbSet<Genero> Generos { get; set; }
     }
 }
