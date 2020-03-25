@@ -183,6 +183,7 @@
     <Content Include="Asserts\css\loading.css" />
     <Content Include="Asserts\css\sb-admin-2.css" />
     <Content Include="Asserts\css\sb-admin-2.min.css" />
+    <Content Include="Asserts\img\republica.png" />
     <Content Include="Asserts\img\undraw_filing_system_b5d2.svg" />
     <Content Include="Asserts\img\undraw_posting_photo.svg" />
     <Content Include="Asserts\js\sb-admin-2.js" />

@@ -46,3 +46,14 @@
         transform: rotate(360deg);
     }
 }
+
+
+@media (max-width: 560px) {
+    html, body {
+        overflow-x: hidden !important;
+    }
+
+    .routing {
+        height: unset !important;
+    }
+}

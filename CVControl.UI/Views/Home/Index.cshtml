@@ -16,6 +16,10 @@
             font-family: Roboto;
         }
 
+        html, body {
+          overflow: hidden;
+        }
+
         #app {
             background: url(../../Asserts/img/undraw_posting_photo.svg);
             background-position: bottom right;
@@ -24,7 +28,7 @@
             height: 100vh;
             width: 100vw;
             overflow-x: hidden;
-            background-color: #222;
+            background-color: #f1f1f1;
         }
 
         #start-page {
@@ -43,7 +47,7 @@
         }
 
         .bottom-2 {
-            bottom: 10px;
+            bottom: 20px;
             left: 0;
         }
 
@@ -73,12 +77,17 @@
             opacity: 0;
             min-height: 84vh;
         }
+
+        .text-black {
+            color: #444;
+        }
     </style>
 </head>
     <body>
         <div id="app" class="container-fluid position-relative">
-            <header class="py-3">
-                <h3 class="text-capitalize font-weight-bold text-white"> Ministério da Saúde ( MINSA ) </h3>
+            <header class="py-3 text-center">
+                <img src="~/Asserts/img/republica.png" height="60"/>
+                @*<h3 class="text-capitalize font-weight-bold text-black"> Ministério da Saúde ( MINSA ) </h3>*@
             </header>
             <div class="row mt-3">
                 <div class="container-fluid routing">
@@ -90,11 +99,11 @@
                         </div>
                         <div class="col-md-6 content-routing">
                             <div class="welcome">
-                                <h1 class="text-center text-white my-3 mt-5">
+                                <h1 class="text-center text-black my-3 mt-5">
                                     Inquérito sobre o <br />
                                     <b class="text-danger">COVID-19</b>
                                 </h1>
-                                <p class="m-auto text-center text-white w-50">
+                                <p class="m-auto text-center text-black w-50">
                                     <b>Olá, eu sou o Pedro!</b> Eu sou um enfermeiro virtual, e estou aqui para te passar algumas informações sobre o coronavírus e te ajudar a identificar se você precisa procurar um posto de saúde ou se bastam alguns cuidados na sua própria casa.
                                     Para isso, eu vou te fazer algumas perguntas. Vamos lá?
                                 </p>
