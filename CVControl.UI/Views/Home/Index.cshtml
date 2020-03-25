@@ -7,8 +7,8 @@
 <head>
     <meta charset="utf-8" />
     <title> COVID-19 </title>
-    <link rel="stylesheet" href="~/Asserts/css/sb-admin-2.min.css" />
-    <link rel="stylesheet" href="~/Asserts/css/loading.css" />
+    <link rel="stylesheet" href="~/Assets/css/sb-admin-2.min.css" />
+    <link rel="stylesheet" href="~/Assets/css/loading.css" />
     <style>
         * {
             margin: 0;
@@ -21,7 +21,7 @@
         }
 
         #app {
-            background: url(../../Asserts/img/undraw_posting_photo.svg);
+            background: url(../../Assets/img/undraw_posting_photo.svg);
             background-position: bottom right;
             background-size: 20%;
             background-repeat:no-repeat;
@@ -78,15 +78,17 @@
             min-height: 84vh;
         }
 
+        /*
         .text-black {
-            color: #444;
+            color: #202020;
         }
+        */
     </style>
 </head>
     <body>
         <div id="app" class="container-fluid position-relative">
             <header class="py-3 text-center">
-                <img src="~/Asserts/img/republica.png" height="60"/>
+                <img src="~/Assets/img/republica.png" height="60"/>
                 @*<h3 class="text-capitalize font-weight-bold text-black"> Ministério da Saúde ( MINSA ) </h3>*@
             </header>
             <div class="row mt-3">
@@ -107,7 +109,6 @@
                                     <b>Olá, eu sou o Pedro!</b> Eu sou um enfermeiro virtual, e estou aqui para te passar algumas informações sobre o coronavírus e te ajudar a identificar se você precisa procurar um posto de saúde ou se bastam alguns cuidados na sua própria casa.
                                     Para isso, eu vou te fazer algumas perguntas. Vamos lá?
                                 </p>
-
                                 <br />
                                 <button id="btn-start" class="btn btn-primary m-auto d-block">
                                     Começar
@@ -121,10 +122,10 @@
                             <!-- questions -->
                             <div class=" close question text-center justify-content-center flex-column">
                                 <div class="d-flex flex-column">
-                                    <small class="d-block text-center text-white-50"> 4 / 20</small>
+                                    <small class="d-block text-center text-white-50"> 4 / 20 </small>
                                     <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
                                 </div>
-                                <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-white">
+                                <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
                                     Agora fala um pouco mais sobre a sua febre. Faz tempo que você está com febre?
                                 </h3>
                                 <!-- p class="w-50 mx-auto"> description here </!--p -->
@@ -152,46 +153,53 @@
             </footer>
         </div>
 
-        <script src="~/Asserts/plugins/jquery/jquery.js"></script>
+        <script src="~/Assets/plugins/jquery/jquery.js"></script>
         <script>
             $(document).ready(function () {
                 $("#btn-start").click(function () {
-                    $('.welcome').animate({ opacity: 0 }, 300).css({ display: 'none' })
-                    showLoading()
 
-                    setTimeout(function () {
-                        $('.welcome').css({ display: 'none' })
-                        hideLoading()
-                        showQuestion()
-                    }, 1000)
-                })
+                    $('.welcome').animate({ opacity: 0 }, 300).css({ display: 'none' });
+
+                    showLoading();
+
+                    setTimeout(function() {
+                            $('.welcome').css({ display:'none'});
+                            hideLoading();
+                            showQuestion();
+                        },
+                        1000);
+                });
 
                 $('#answers li button').click(function () {
-                    hideQuestion()
-                    showLoading()
+
+                    hideQuestion();
+
+                    showLoading();
+
                     setTimeout(function () {
-                        hideLoading()
-                        showQuestion()
-                    }, 1000)
-                })
+                        hideLoading();
+                        showQuestion();
+                        },
+                        1000);
+                });
 
                 function showLoading() {
-                    $('.spinner').animate({ opacity: 1 }, 300)
-                    $('.spinner').delay(300).removeClass('close').addClass('d-flex')
+                    $('.spinner').animate({ opacity: 1 }, 300);
+                    $('.spinner').delay(300).removeClass('close').addClass('d-flex');
                 }
 
                 function showQuestion() {
-                    $('.question').animate({ opacity: 1 }, 300)
-                    $('.question').removeClass('close').addClass('d-flex')
+                    $('.question').animate({ opacity: 1 }, 300);
+                    $('.question').removeClass('close').addClass('d-flex');
                 }
 
                 function hideLoading() {
-                     $('.spinner').removeClass('d-flex').css({ display: 'none' }).animate({ opacity: 0 }, 100)
+                    $('.spinner').removeClass('d-flex').css({ display: 'none' }).animate({ opacity: 0 }, 100);
                 }
 
                 function hideQuestion() {
-                     $('.question').animate({ opacity: 0 }, 300)
-                     $('.question').removeClass('d-flex').addClass('close')
+                    $('.question').animate({ opacity: 0 }, 300);
+                    $('.question').removeClass('d-flex').addClass('close');
                 }
             })
         </script>
