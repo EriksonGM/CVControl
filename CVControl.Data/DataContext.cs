@@ -59,6 +59,7 @@ namespace CVControl.Data
             //    .WithMany(e => e.Clientes)
             //    .Map(m => m.ToTable("ClienteEmpresa").MapLeftKey("IdCliente").MapRightKey("IdEmpresa"));
 
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -81,5 +82,6 @@ namespace CVControl.Data
         public DbSet<Provincia> Provincias { get; set; }
         public DbSet<Municipio> Municipios { get; set; }
         public DbSet<Genero> Generos { get; set; }
+        public DbSet<IntervaloIdade> IntervaloIdades { get; set; }
     }
 }

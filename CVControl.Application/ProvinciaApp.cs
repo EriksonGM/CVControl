@@ -9,23 +9,23 @@ namespace CVControl.Application
 {
     public class ProvinciaApp : App
     {
-        public AppResultado ListarProvinciasComMunicipios()
+        public List<ProvinciaDTO> ListarProvinciasComMunicipios()
         {
-            var res = new AppResultado();
+            var res = new List<ProvinciaDTO>();
 
             try
             {
                 var provincias = db.Provincias.Include(x => x.Municipios).ToList();
 
-                var provinciasDTO = mapper.Map<List<ProvinciaDTO>>(provincias);
+                res = mapper.Map<List<ProvinciaDTO>>(provincias);
 
-                return res.Good(provinciasDTO);
+                return res;
 
             }
             catch (Exception e)
             {
                 SystemLog.Erro(e);
-                return res.Bad("Erro ao listar provincias");
+                return res;
             }
         }
     }
