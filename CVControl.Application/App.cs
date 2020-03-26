@@ -24,6 +24,7 @@ namespace CVControl.Application
                 cfg.AddProfile<ProvinciaProfile>();
                 cfg.AddProfile<IntervaloIdadeProfile>();
                 cfg.AddProfile<GeneroProfile>();
+                cfg.AddProfile<SintomaProfile>();
             });
 
             mapper = config.CreateMapper();

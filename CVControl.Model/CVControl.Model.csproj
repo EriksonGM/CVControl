@@ -46,10 +46,10 @@
     <Compile Include="GeneroDTO.cs" />
     <Compile Include="IntervaloIdadeDTO.cs" />
     <Compile Include="MunicipioDTO.cs" />
-    <Compile Include="PerguntaDTO.cs" />
     <Compile Include="ProvinciaDTO.cs" />
-    <Compile Include="RespostaDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultadoDTO.cs" />
+    <Compile Include="SintomaDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

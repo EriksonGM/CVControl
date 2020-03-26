@@ -61,6 +61,7 @@
     <Compile Include="GeneroApp.cs" />
     <Compile Include="IntervaloIdadesApp.cs" />
     <Compile Include="Logs\SystemLog.cs" />
+    <Compile Include="Mappers\SintomaProfile.cs" />
     <Compile Include="Mappers\GeneroProfile.cs" />
     <Compile Include="Mappers\EstadoCivilProfile.cs" />
     <Compile Include="Mappers\IntervaloIdadeProfile.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Mappers\ProvinciaProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinciaApp.cs" />
+    <Compile Include="SintomaApp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -22,13 +22,10 @@
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -36,13 +33,11 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">CVControl<sup>2</sup></div>
             </a>
-
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="@Url.Action("Index","Inicio", new {Area ="Admin"})">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Inicio</span>
                 </a>
@@ -250,7 +245,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+                    <h1 class="h3 mb-4 text-gray-800">@ViewBag.Title</h1>
                     @RenderBody()
                 </div>
                 <!-- /.container-fluid -->

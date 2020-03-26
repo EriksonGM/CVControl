@@ -13,6 +13,7 @@ namespace CVControl.UI.Controllers
         private readonly IntervaloIdadesApp _intervaloIdadesApp;
         private readonly GeneroApp _generoApp;
         private readonly EstadoCivilApp _estadoCivilApp;
+        private readonly SintomaApp _sintomaApp;
 
         public HomeController()
         {
@@ -20,6 +21,7 @@ namespace CVControl.UI.Controllers
             _intervaloIdadesApp = new IntervaloIdadesApp();
             _generoApp= new GeneroApp();
             _estadoCivilApp= new EstadoCivilApp();
+            _sintomaApp = new SintomaApp();
         }
 
         public ActionResult Index()
@@ -29,6 +31,8 @@ namespace CVControl.UI.Controllers
             ViewBag.Idades = _intervaloIdadesApp.ListarIntervalos();
 
             ViewBag.EstadosCivis = _estadoCivilApp.ListarEstadosCivis();
+
+            ViewBag.Sintomas = _sintomaApp.ListarSintomas();
 
             return View();
         }

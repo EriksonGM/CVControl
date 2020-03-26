@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace CVControl.UI.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class InicioController : Controller
     {
         // GET: Admin/Home
         public ActionResult Index()
