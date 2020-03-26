@@ -45,14 +45,10 @@ namespace CVControl.Data
 
         public DbSet<EstadoCivil> EstadosCivis { get; set; }
         public DbSet<Resultado> Resultados { get; set; }
-
-        //public DbSet<Pergunta> Perguntas { get; set; }
-        //public DbSet<Resposta> Respuestas { get; set; }
         public DbSet<Provincia> Provincias { get; set; }
         public DbSet<Municipio> Municipios { get; set; }
         public DbSet<Genero> Generos { get; set; }
         public DbSet<IntervaloIdade> IntervaloIdades { get; set; }
-
         public DbSet<Sintoma> Sintomas { get; set; }
     }
 }
