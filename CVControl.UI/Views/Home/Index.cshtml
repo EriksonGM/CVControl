@@ -25,14 +25,22 @@
         }
 
         #app {
-            background: url(../../Assets/img/undraw_posting_photo.svg);
-            background-position: bottom right;
-            background-size: 20%;
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+
+        #app::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.4;
+            background: url(../../Assets/img/bg.PNG);
+            background-position: center;
+            background-size: cover;
             background-repeat: no-repeat;
             height: 100vh;
             width: 100vw;
-            overflow-x: hidden;
-            background-color: #f1f1f1;
         }
 
         #start-page {
@@ -82,17 +90,18 @@
             min-height: 84vh;
         }
 
-        /*
+        
         .text-black {
             color: #202020;
         }
-        */
+        
     </style>
 </head>
 <body>
     <div id="app" class="container-fluid position-relative">
-        <header class="py-3 text-center">
-            <img src="~/Assets/img/republica.png" height="60" />
+        <header class="py-3 text-center position-relative">
+            <img src="~/Assets/img/Logotipo3.png" class="position-absolute lgo" height="250"  />
+            <img src="~/Assets/img/republica.png" height="120" />
             @*<h3 class="text-capitalize font-weight-bold text-black"> Ministério da Saúde ( MINSA ) </h3>*@
         </header>
         <div class="row mt-3">
@@ -110,7 +119,7 @@
                                 <b class="text-danger">COVID-19</b>
                             </h1>
                             <p class="m-auto text-center text-black w-50">
-                                <b>Olá, eu sou o Pedro!</b> Eu sou um enfermeiro virtual, e estou aqui para te passar algumas informações sobre o coronavírus e te ajudar a identificar se você precisa procurar um posto de saúde ou se bastam alguns cuidados na sua própria casa.
+                                <b>Olá, eu sou a Kwame!</b> Eu sou um enfermeiro virtual, e estou aqui para te passar algumas informações sobre o coronavírus e te ajudar a identificar se você precisa procurar um posto de saúde ou se bastam alguns cuidados na sua própria casa.
                                 Para isso, eu vou te fazer algumas perguntas. Vamos lá?
                             </p>
                             <br />
@@ -250,7 +259,7 @@
                                 <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
                             </div>
                             <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
-                                A sua licalização?
+                                A sua localização?
                             </h3>
                             <ul id="answers" class="list-unstyled w-50 mx-auto">
                                 <li class="w-100 my-2">
@@ -258,17 +267,15 @@
                                     <textarea rows="3" id="endereco" class="form-control" required></textarea>
                                 </li>
                                 <li class="w-100 my-2">
-                                    <label for="municipio">Municipio</label>
-                                    <select class="form-control" id="municipio" required>
+                                    <label for="municipio">Província</label>
+                                    <select class="form-control" id="provincia" required>
                                         @foreach (var p in (List<ProvinciaDTO>)ViewBag.Provincias)
                                         {
-                                            <optgroup label="@p.Nome"></optgroup>
-                                            foreach (var m in p.Municipios)
-                                            {
-                                                <option value="@m.IdMunicipio">@m.Nome</option>
-                                            }
+                                            <option label="@p.Nome" value="">@p.Nome</option>
                                         }
                                     </select>
+                                    <label for="municipio">Municipio</label>
+                                    <select class="form-control" id="municipio" disabled required></select>
                                 </li>
                                 <li class="w-100">
                                     <button class="btn btn-primary w-100" data-id="16" id="saveQuestionFour"> Avançar </button>
@@ -475,6 +482,9 @@
                 }, 500);
             });
 
+            $('#provincia').change(function () {
+                console.log($(this).val())
+            })
 
             $('.submit-form').submit(function (e) {
                 e.preventDefault()
