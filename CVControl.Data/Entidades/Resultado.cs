@@ -34,7 +34,6 @@ namespace CVControl.Data.Entidades
         [MaxLength(9,ErrorMessage = "O {0} tem um limite de {1} caracteres")]
         public string Telefone { get; set; }
         public int IdIntervaloFilhos { get; set; }
-
         [ForeignKey("IdIntervaloFilhos")]
         public IntervaloFilhos IntervaloFilhos { get; set; }
         public bool Febre { get; set; } 
@@ -42,7 +41,6 @@ namespace CVControl.Data.Entidades
         public bool Contacto { get; set; } 
         public bool Viagem { get; set; } 
         public bool Gravida { get; set; }
-
         public List<int> IdSintomas { get; set; }
         public virtual ICollection<Sintoma> Sintomas { get; set; }
     }
