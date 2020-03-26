@@ -53,7 +53,24 @@
         overflow-x: hidden !important;
     }
 
-    .routing {
+    #start-page {
         height: unset !important;
+    }
+
+
+    .video {
+        height: 300px !important;
+        transition: all 0.26s ease;
+    }
+
+    .w-50 {
+        width: 100% !important;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+    #app {
+        background-image: none !important;
     }
 }

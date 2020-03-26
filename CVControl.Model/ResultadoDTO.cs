@@ -36,5 +36,6 @@ namespace CVControl.Model
         public bool Gravida { get; set; }
 
         public virtual List<SintomaDTO> Sintomas { get; set; }
+        public List<int> IdSintomas { get; set; }
     }
 }
