@@ -8,9 +8,11 @@
 <head>
     <meta charset="utf-8" />
     <title> COVID-19 </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="~/Assets/css/sb-admin-2.min.css" />
     <link rel="stylesheet" href="~/Assets/css/loading.css" />
-    <link rel="stylesheet"href="~/Assets/plugins/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="~/Assets/plugins/fontawesome-free/css/all.min.css" />
     <style>
         * {
             margin: 0;
@@ -43,10 +45,10 @@
             transition: all 0.26s ease;
         }
 
-            .video iframe {
-                height: 100% !important;
-                width: 80% !important;
-            }
+        .video iframe {
+            height: 100% !important;
+            width: 80% !important;
+        }
 
         .bottom-2 {
             bottom: 20px;
@@ -479,7 +481,7 @@
 
                 var checkedSintomas = []
 
-                $('input[name="sintomas"]').each((i, item) => {
+                $('input[name="sintomas"]').each(function(i, item) {
                     if ($(item).prop('checked')) {
                         checkedSintomas.push($(item).val())
                     }
@@ -496,8 +498,7 @@
                 showLoading()
                 var serializedForm = getFormData($('.hidden-form'))
 
-                serializedForm.IdSintomas = serializedForm.IdSintomas.split(',').map(item => Number(item))
-                console.log(serializedForm)
+                serializedForm.IdSintomas = serializedForm.IdSintomas.split(',').map(function (item) { return Number(item) })
                 $.ajax({
                     method: 'POST',
                     url: '/',
@@ -516,7 +517,7 @@
                 })
             }
    
-            function showQuestion(question, answers = []) {
+            function showQuestion(question, answers) {
                switch (question) {
                    case 1:
                         $('.question-form[data-id="1"]').animate({ opacity: 1 }, 300);
