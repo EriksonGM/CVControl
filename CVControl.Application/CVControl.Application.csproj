@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,10 +56,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="Logs\SystemLog.cs" />
     <Compile Include="Mappers\EstadoCivilProfile.cs" />
+    <Compile Include="Mappers\IntervaloIdadeProfile.cs" />
+    <Compile Include="Mappers\MunicipioProfile.cs" />
+    <Compile Include="Mappers\ProvinciaProfile.cs" />
     <Compile Include="Mappers\RespostaProfile.cs" />
     <Compile Include="Mappers\ResultadoProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvinciaApp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

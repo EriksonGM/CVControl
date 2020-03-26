@@ -55,6 +55,7 @@
     <Compile Include="DataContext.cs" />
     <Compile Include="Entidades\EstadoCivil.cs" />
     <Compile Include="Entidades\Genero.cs" />
+    <Compile Include="Entidades\IntervaloIdade.cs" />
     <Compile Include="Entidades\Municipio.cs" />
     <Compile Include="Entidades\Pergunta.cs" />
     <Compile Include="Entidades\Provincia.cs" />

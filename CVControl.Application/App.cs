@@ -22,6 +22,9 @@ namespace CVControl.Application
                 cfg.AddProfile<EstadoCivilProfile>();
                 cfg.AddProfile<RespostaProfile>();
                 cfg.AddProfile<ResultadoProfile>();
+                cfg.AddProfile<MunicipioProfile>();
+                cfg.AddProfile<ProvinciaProfile>();
+                cfg.AddProfile<IntervaloIdadeProfile>();
             });
 
             mapper = config.CreateMapper();
