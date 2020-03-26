@@ -104,7 +104,7 @@
             <img src="~/Assets/img/republica.png" height="120" />
             @*<h3 class="text-capitalize font-weight-bold text-black"> Ministério da Saúde ( MINSA ) </h3>*@
         </header>
-        <div class="row mt-3">
+        <div class="row">
             <div class="container-fluid routing">
                 <div id="start-page" class="row">
                     <div class="col-md-6">
@@ -263,19 +263,21 @@
                             </h3>
                             <ul id="answers" class="list-unstyled w-50 mx-auto">
                                 <li class="w-100 my-2">
-                                    <label for="endereco">Endereço</label>
-                                    <textarea rows="3" id="endereco" class="form-control" required></textarea>
-                                </li>
-                                <li class="w-100 my-2">
                                     <label for="municipio">Província</label>
                                     <select class="form-control" id="provincia" required>
                                         @foreach (var p in (List<ProvinciaDTO>)ViewBag.Provincias)
                                         {
-                                            <option label="@p.Nome" value="">@p.Nome</option>
+                                            <option label="@p.Nome" value="@p.IdProvincia">@p.Nome</option>
                                         }
                                     </select>
+                                </li>
+                                <li class="w-100 my-2">
                                     <label for="municipio">Municipio</label>
                                     <select class="form-control" id="municipio" disabled required></select>
+                                </li>
+                                <li class="w-100 my-2">
+                                    <label for="endereco">Endereço</label>
+                                    <textarea rows="3" id="endereco" class="form-control" required></textarea>
                                 </li>
                                 <li class="w-100">
                                     <button class="btn btn-primary w-100" data-id="16" id="saveQuestionFour"> Avançar </button>
@@ -434,7 +436,7 @@
                     showQuestionOne();
                 }, 500);
             });
-            
+            loadCities(1)
             function showQuestionOne() {
                 $('.question-form[data-id="1"]').animate({ opacity: 1 }, 300);
                 $('.question-form[data-id="1"]').removeClass('close').addClass('d-flex');
@@ -483,8 +485,24 @@
             });
 
             $('#provincia').change(function () {
-                console.log($(this).val())
+                loadCities($(this).val())
             })
+
+
+            function loadCities(state_id) {
+                $('#municipio').empty().attr('disabled', true)
+                $.ajax({
+                    url: '/home/municipios/' + state_id
+                }).then(function (data) {
+                    var lines = '';
+                    data.forEach(function (line) {
+                        lines += '<option value="'+line.IdMunicipio+'">' + line.Nome+ '</option>'
+                    })
+
+                    $('#municipio').append(lines).attr('disabled', false)
+
+                })
+            }
 
             $('.submit-form').submit(function (e) {
                 e.preventDefault()
