@@ -1,4 +1,5 @@
-﻿@{
+﻿@using CVControl.Model
+@{
     ViewBag.Title = "Home Page";
     Layout = null;
 }
@@ -17,14 +18,14 @@
         }
 
         html, body {
-          overflow: hidden;
+            overflow: hidden;
         }
 
         #app {
             background: url(../../Assets/img/undraw_posting_photo.svg);
             background-position: bottom right;
             background-size: 20%;
-            background-repeat:no-repeat;
+            background-repeat: no-repeat;
             height: 100vh;
             width: 100vw;
             overflow-x: hidden;
@@ -41,10 +42,10 @@
             transition: all 0.26s ease;
         }
 
-        .video iframe {
-            height: 100% !important;
-            width: 80% !important;
-        }
+            .video iframe {
+                height: 100% !important;
+                width: 80% !important;
+            }
 
         .bottom-2 {
             bottom: 20px;
@@ -85,148 +86,221 @@
         */
     </style>
 </head>
-    <body>
-        <div id="app" class="container-fluid position-relative">
-            <header class="py-3 text-center">
-                <img src="~/Assets/img/republica.png" height="60"/>
-                @*<h3 class="text-capitalize font-weight-bold text-black"> Ministério da Saúde ( MINSA ) </h3>*@
-            </header>
-            <div class="row mt-3">
-                <div class="container-fluid routing">
-                    <div id="start-page" class="row">
-                        <div class="col-md-6">
-                            <div class="video d-flex overflow-hidden justify-content-center position-relative">
-                                <iframe src="https://www.youtube.com/embed/YJg2ozy4HPQ?autoplay=1&modestbranding=1&rel=0&theme=light&fs=0&autohide=0&controls=0&disablekb=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-md-6 content-routing">
-                            <div class="welcome">
-                                <h1 class="text-center text-black my-3 mt-5">
-                                    Inquérito sobre o <br />
-                                    <b class="text-danger">COVID-19</b>
-                                </h1>
-                                <p class="m-auto text-center text-black w-50">
-                                    <b>Olá, eu sou o Pedro!</b> Eu sou um enfermeiro virtual, e estou aqui para te passar algumas informações sobre o coronavírus e te ajudar a identificar se você precisa procurar um posto de saúde ou se bastam alguns cuidados na sua própria casa.
-                                    Para isso, eu vou te fazer algumas perguntas. Vamos lá?
-                                </p>
-                                <br />
-                                <button id="btn-start" class="btn btn-primary m-auto d-block">
-                                    Começar
-                                </button>
-                                <br />
-                            </div>
-                            <!-- loading question -->
-                            <div class="spinner close align-items-center">
-                                <div class="loader">Loading...</div>
-                            </div>
-                            <!-- questions -->
-                            <div class=" close question text-center justify-content-center flex-column">
-                                <div class="d-flex flex-column">
-                                    <small class="d-block text-center text-white-50"> 4 / 20 </small>
-                                    <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
-                                </div>
-                                <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
-                                    Agora fala um pouco mais sobre a sua febre. Faz tempo que você está com febre?
-                                </h3>
-                                <!-- p class="w-50 mx-auto"> description here </!--p -->
-                                <ul id="answers" class="list-unstyled w-50 mx-auto">
-                                    <li class="w-100 my-2">
-                                        <button class="btn btn-primary w-100" data-id="1"> ABC </button>
-                                    </li>
-                                    <li class="w-100 my-2">
-                                        <button class="btn btn-primary w-100" data-id="162"> ABC </button>
-                                    </li>
-                                    <li class="w-100 my-2">
-                                        <button class="btn btn-primary w-100" data-id="65"> ABC </button>
-                                    </li>
-                                    <li class="w-100">
-                                        <button class="btn btn-primary w-100" data-id="16"> ABC </button>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class=" close question text-center justify-content-center flex-column">
-                                <div class="d-flex flex-column">
-                                    <small class="d-block text-center text-white-50"> 4 / 20 </small>
-                                    <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
-                                </div>
-                                <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
-                                    Agora fala um pouco mais sobre a sua febre. Faz tempo que você está com febre?
-                                </h3>
-                                <!-- p class="w-50 mx-auto"> description here </!--p -->
-                                <ul id="answers" class="list-unstyled w-50 mx-auto">
-                                    <li class="w-100 my-2">
-                                        <button class="btn btn-primary w-100" data-id="1"> ABC </button>
-                                    </li>
-                                    <li class="w-100 my-2">
-                                        <button class="btn btn-primary w-100" data-id="162"> ABC </button>
-                                    </li>
-                                    <li class="w-100 my-2">
-                                        <button class="btn btn-primary w-100" data-id="65"> ABC </button>
-                                    </li>
-                                    <li class="w-100">
-                                        <button class="btn btn-primary w-100" data-id="16"> ABC </button>
-                                    </li>
-                                </ul>
-                            </div>
+<body>
+    <div id="app" class="container-fluid position-relative">
+        <header class="py-3 text-center">
+            <img src="~/Assets/img/republica.png" height="60" />
+            @*<h3 class="text-capitalize font-weight-bold text-black"> Ministério da Saúde ( MINSA ) </h3>*@
+        </header>
+        <div class="row mt-3">
+            <div class="container-fluid routing">
+                <div id="start-page" class="row">
+                    <div class="col-md-6">
+                        <div class="video d-flex overflow-hidden justify-content-center position-relative">
+                            <iframe src="https://www.youtube.com/embed/YJg2ozy4HPQ?autoplay=1&modestbranding=1&rel=0&theme=light&fs=0&autohide=0&controls=0&disablekb=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
-                </div>       
+                    <div class="col-md-6 content-routing">
+                        <div class="welcome">
+                            <h1 class="text-center text-black my-3 mt-5">
+                                Inquérito sobre o <br />
+                                <b class="text-danger">COVID-19</b>
+                            </h1>
+                            <p class="m-auto text-center text-black w-50">
+                                <b>Olá, eu sou o Pedro!</b> Eu sou um enfermeiro virtual, e estou aqui para te passar algumas informações sobre o coronavírus e te ajudar a identificar se você precisa procurar um posto de saúde ou se bastam alguns cuidados na sua própria casa.
+                                Para isso, eu vou te fazer algumas perguntas. Vamos lá?
+                            </p>
+                            <br />
+                            <button id="btn-start" class="btn btn-primary m-auto d-block">
+                                Começar
+                            </button>
+                            <br />
+                        </div>
+                        <!-- loading question -->
+                        <div class="spinner close align-items-center">
+                            <div class="loader">Loading...</div>
+                        </div>
+                        <!-- questions -->
+                        <div class=" close question text-center justify-content-center flex-column">
+                            <div class="d-flex flex-column">
+                                <small class="d-block text-center text-white-50"> 4 / 20 </small>
+                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
+                            </div>
+                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
+                                Agora fala um pouco mais sobre a sua febre. Faz tempo que você está com febre?
+                            </h3>
+                            <!-- p class="w-50 mx-auto"> description here </!--p -->
+                            <ul id="answers" class="list-unstyled w-50 mx-auto">
+                                <li class="w-100 my-2">
+                                    <button class="btn btn-primary w-100" data-id="1"> ABC </button>
+                                </li>
+                                <li class="w-100 my-2">
+                                    <button class="btn btn-primary w-100" data-id="162"> ABC </button>
+                                </li>
+                                <li class="w-100 my-2">
+                                    <button class="btn btn-primary w-100" data-id="65"> ABC </button>
+                                </li>
+                                <li class="w-100">
+                                    <button class="btn btn-primary w-100" data-id="16"> ABC </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class=" close question text-center justify-content-center flex-column">
+                            <div class="d-flex flex-column">
+                                <small class="d-block text-center text-white-50"> 4 / 20 </small>
+                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
+                            </div>
+                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
+                                Em que provincia se encontra?
+                            </h3>
+                            <!-- p class="w-50 mx-auto"> description here </!--p -->
+                            <ul id="answers" class="list-unstyled w-50 mx-auto">
+                                <li class="w-100 my-2">
+                                    <select class="form-control">
+                                        @foreach (var p in (List<ProvinciaDTO>)ViewBag.Provincias)
+                                        {
+                                            <optgroup label="@p.Nome"></optgroup>
+                                            foreach (var m in p.Municipios)
+                                            {
+                                                <option value="@m.IdMunicipio">@m.Nome</option>
+                                            }
+                                        }
+
+                                    </select>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class=" close question text-center justify-content-center flex-column">
+                            <div class="d-flex flex-column">
+                                <small class="d-block text-center text-white-50"> 4 / 20 </small>
+                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
+                            </div>
+                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
+                                Já teve febre?
+                            </h3>
+                            <!-- p class="w-50 mx-auto"> description here </!--p -->
+                            <ul id="answers" class="list-unstyled w-50 mx-auto">
+                                <li class="w-100 my-2">
+                                    <button class="btn btn-primary w-100" data-id="65"> Sim </button>
+                                </li>
+                                <li class="w-100">
+                                    <button class="btn btn-primary w-100" data-id="16"> Não </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class=" close question text-center justify-content-center flex-column">
+                            <div class="d-flex flex-column">
+                                <small class="d-block text-center text-white-50"> 4 / 20 </small>
+                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
+                            </div>
+                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
+                                Ja tomou alguma medicação?
+                            </h3>
+                            <!-- p class="w-50 mx-auto"> description here </!--p -->
+                            <ul id="answers" class="list-unstyled w-50 mx-auto">
+                                <li class="w-100 my-2">
+                                    <button class="btn btn-primary w-100" data-id="65"> Sim </button>
+                                </li>
+                                <li class="w-100">
+                                    <button class="btn btn-primary w-100" data-id="16"> Não </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class=" close question text-center justify-content-center flex-column">
+                            <div class="d-flex flex-column">
+                                <small class="d-block text-center text-white-50"> 4 / 20 </small>
+                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
+                            </div>
+                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
+                                Teve contato com alguém que resultou positivo para Coronavírus ou que tenha suspeita de estar infectado?
+                            </h3>
+                            <!-- p class="w-50 mx-auto"> description here </!--p -->
+                            <ul id="answers" class="list-unstyled w-50 mx-auto">
+                                <li class="w-100 my-2">
+                                    <button class="btn btn-primary w-100" data-id="65"> Sim, tive contato </button>
+                                </li>
+                                <li class="w-100">
+                                    <button class="btn btn-primary w-100" data-id="16"> Não tive contato ou não tenho certeza se tive </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class=" close question text-center justify-content-center flex-column">
+                            <div class="d-flex flex-column">
+                                <small class="d-block text-center text-white-50"> 4 / 20 </small>
+                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
+                            </div>
+                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
+                                Você realizou alguma viagem internacional recentemente?
+                            </h3>
+                            <!-- p class="w-50 mx-auto"> description here </!--p -->
+                            <ul id="answers" class="list-unstyled w-50 mx-auto">
+                                <li class="w-100 my-2">
+                                    <button class="btn btn-primary w-100" data-id="65"> Sim </button>
+                                </li>
+                                <li class="w-100">
+                                    <button class="btn btn-primary w-100" data-id="16"> Não </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <footer class="d-flex justify-content-center position-relative w-100">
-                <img src="https://www.digitalfactory.co.ao/assets/static/lgo.8781f99.ee2e665.png" height="50" />
-            </footer>
         </div>
+        <footer class="d-flex justify-content-center position-relative w-100">
+            <img src="https://www.digitalfactory.co.ao/assets/static/lgo.8781f99.ee2e665.png" height="50" />
+        </footer>
+    </div>
 
-        <script src="~/Assets/plugins/jquery/jquery.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#btn-start").click(function () {
+    <script src="~/Assets/plugins/jquery/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn-start").click(function () {
 
-                    $('.welcome').animate({ opacity: 0 }, 300).css({ display: 'none' });
+                $('.welcome').animate({ opacity: 0 }, 300).css({ display: 'none' });
 
-                    showLoading();
+                showLoading();
 
-                    setTimeout(function() {
-                            $('.welcome').css({ display:'none'});
-                            hideLoading();
-                            showQuestion();
-                        },
-                        1000);
-                });
+                setTimeout(function () {
+                    $('.welcome').css({ display: 'none' });
+                    hideLoading();
+                    showQuestion();
+                },
+                    1000);
+            });
 
-                $('#answers li button').click(function () {
+            $('#answers li button').click(function () {
 
-                    hideQuestion();
+                hideQuestion();
 
-                    showLoading();
+                showLoading();
 
-                    setTimeout(function () {
-                        hideLoading();
-                        showQuestion();
-                        },
-                        1000);
-                });
+                setTimeout(function () {
+                    hideLoading();
+                    showQuestion();
+                },
+                    1000);
+            });
 
-                function showLoading() {
-                    $('.spinner').animate({ opacity: 1 }, 300);
-                    $('.spinner').delay(300).removeClass('close').addClass('d-flex');
-                }
+            function showLoading() {
+                $('.spinner').animate({ opacity: 1 }, 300);
+                $('.spinner').delay(300).removeClass('close').addClass('d-flex');
+            }
 
-                function showQuestion() {
-                    $('.question').animate({ opacity: 1 }, 300);
-                    $('.question').removeClass('close').addClass('d-flex');
-                }
+            function showQuestion() {
+                $('.question').animate({ opacity: 1 }, 300);
+                $('.question').removeClass('close').addClass('d-flex');
+            }
 
-                function hideLoading() {
-                    $('.spinner').removeClass('d-flex').css({ display: 'none' }).animate({ opacity: 0 }, 100);
-                }
+            function hideLoading() {
+                $('.spinner').removeClass('d-flex').css({ display: 'none' }).animate({ opacity: 0 }, 100);
+            }
 
-                function hideQuestion() {
-                    $('.question').animate({ opacity: 0 }, 300);
-                    $('.question').removeClass('d-flex').addClass('close');
-                }
-            })
-        </script>
-    </body>
+            function hideQuestion() {
+                $('.question').animate({ opacity: 0 }, 300);
+                $('.question').removeClass('d-flex').addClass('close');
+            }
+        })
+    </script>
+</body>
 </html>
