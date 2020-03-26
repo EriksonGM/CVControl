@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CVControl.Application.Logs;
 using CVControl.Data.Entidades;
 using CVControl.Model;
+using CVControl.Model.Estatisticas;
 
 namespace CVControl.Application
 {
@@ -44,10 +45,36 @@ namespace CVControl.Application
             catch (Exception e)
             {
                 SystemLog.Erro(e);
-                return res;
+                return res.Bad("Erro ao guardar resultado");
             }
         }
 
-        //public 
+        public EstatisticasGerais CalcularEstatisticas()
+        {
+            var res = new EstatisticasGerais
+            {
+                TotalResultados = 0,
+                ResultadoRiscoHoje = 0,
+                ResultadosHoje = 0,
+                ResultadosRisco = 0
+            };
+
+            try
+            {
+                var qry = db.Resultados
+                    .AsNoTracking()
+                    .AsQueryable();
+
+                
+
+                return res;
+            }
+            catch (Exception e)
+            {
+                SystemLog.Erro(e);
+
+                return res;
+            }
+        }
     }
 }

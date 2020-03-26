@@ -40,6 +40,8 @@ namespace CVControl.UI.Controllers
 
             ViewBag.Filhos = _intervaloFilhosApp.ListarIntervalos();
 
+            ViewBag.Genero = _generoApp.ListarGeneros();
+
             return View();
         }
 
