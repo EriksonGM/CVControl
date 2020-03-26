@@ -20,13 +20,12 @@ namespace CVControl.Model
         public int IdGenero { get; set; }
         public GeneroDTO Genero { get; set; }
         public int IdIntervaloIdade { get; set; }
-
         [Required]
         public string Endereco { get; set; }
-
         [Required]
         public string Telefone { get; set; }
-        public int Filhos { get; set; }
+        public int IdIntervaloFilhos { get; set; }
+        public IntervaloFilhosDTO IntervaloFilhos { get; set; }
         public bool Febre { get; set; }
         public bool Medicacao { get; set; }
         public bool Contacto { get; set; }

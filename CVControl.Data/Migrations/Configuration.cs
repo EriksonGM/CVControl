@@ -29,6 +29,13 @@ namespace CVControl.Data.Migrations
                 new Genero { IdGenero = 2, Nome = "Masculino" }
                 );
 
+            ctx.IntervalosFilhos.AddOrUpdate(x=>x.IdIntervaloFilhos,
+                new IntervaloFilhos{IdIntervaloFilhos = 1, Intervalo = "Nenhum"},
+                new IntervaloFilhos{IdIntervaloFilhos = 2, Intervalo = "1 o 2 filhos"},
+                new IntervaloFilhos{IdIntervaloFilhos = 3, Intervalo = "3 a 5 filhos"},
+                new IntervaloFilhos{IdIntervaloFilhos = 4, Intervalo = "Mais de 5"}
+                );
+
             ctx.EstadosCivis.AddOrUpdate(x => x.IdEstadoCivil,
                 new EstadoCivil { IdEstadoCivil = 1, Estado = "Solteiro(a)" },
                 new EstadoCivil { IdEstadoCivil = 2, Estado = "Casado(a)" },

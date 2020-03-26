@@ -50,5 +50,7 @@ namespace CVControl.Data
         public DbSet<Genero> Generos { get; set; }
         public DbSet<IntervaloIdade> IntervaloIdades { get; set; }
         public DbSet<Sintoma> Sintomas { get; set; }
+
+        public DbSet<IntervaloFilhos> IntervalosFilhos { get; set; }
     }
 }

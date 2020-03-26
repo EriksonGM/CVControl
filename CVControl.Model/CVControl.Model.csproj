@@ -53,7 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EstadoCivilDTO.cs" />
+    <Compile Include="Estatisticas\EstatisticasGerais.cs" />
     <Compile Include="GeneroDTO.cs" />
+    <Compile Include="IntervaloFilhosDTO.cs" />
     <Compile Include="IntervaloIdadeDTO.cs" />
     <Compile Include="MunicipioDTO.cs" />
     <Compile Include="ProvinciaDTO.cs" />
@@ -61,5 +63,6 @@
     <Compile Include="ResultadoDTO.cs" />
     <Compile Include="SintomaDTO.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
