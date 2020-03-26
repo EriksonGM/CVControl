@@ -1973,6 +1973,16 @@
     <Content Include="Assets\plugins\jquery\jquery.slim.min.map" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CVControl.Application\CVControl.Application.csproj">
+      <Project>{5bf07873-a40d-4dd9-b819-8bd903fab70c}</Project>
+      <Name>CVControl.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CVControl.Model\CVControl.Model.csproj">
+      <Project>{c456b3e8-5975-47a8-8bb4-671fe12be51b}</Project>
+      <Name>CVControl.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

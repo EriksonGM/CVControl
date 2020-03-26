@@ -3,28 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CVControl.Application;
 
 namespace CVControl.UI.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ProvinciaApp _provinciaApp;
+
+        public HomeController()
+        {
+            _provinciaApp = new ProvinciaApp();
+        }
+
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Provincias = _provinciaApp.ListarProvinciasComMunicipios();
 
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }
