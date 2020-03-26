@@ -33,8 +33,12 @@ namespace CVControl.Application
                     Medicacao = dto.Medicacao,
                     Contacto = dto.Contacto,
                     Viagem = dto.Viagem,
+                    Febre = dto.Febre,
                     Gravida = dto.Gravida
                 };
+
+                if (dto.IdSintomas.Any())
+                    resultado.Sintomas = db.Sintomas.Where(x => dto.IdSintomas.Contains(x.IdSintomas)).ToList();
 
                 db.Resultados.Add(resultado);
 
@@ -54,9 +58,9 @@ namespace CVControl.Application
             var res = new EstatisticasGerais
             {
                 TotalResultados = 0,
-                ResultadoRiscoHoje = 0,
+                ResultadoBaixoRisco = 0,
                 ResultadosHoje = 0,
-                ResultadosRisco = 0
+                ResultadosAltoRisco = 0
             };
 
             try
@@ -65,14 +69,18 @@ namespace CVControl.Application
                     .AsNoTracking()
                     .AsQueryable();
 
-               
-                res.ResultadosHoje = qry.Count(x => x.DataCriacao > DateTime.Now.AddDays(-1));
+
+                //res.ResultadosHoje = qry.Count(x => x.DataCriacao > DateTime.Now.AddDays(-1));
+
+                
 
                 res.TotalResultados = qry.Count();
 
-                res.ResultadoRiscoHoje = qry.Count(x => x.DataCriacao.Date == DateTime.Now.Date);
+                res.ResultadosAltoRisco = qry.Count(x => x.Contacto & x.Febre & x.Viagem);
 
-                res.ResultadosHoje = qry.Count(x => x.DataCriacao.Date == DateTime.Now.Date);
+                //res.ResultadoBaixoRisco = qry.Count(x => x.DataCriacao.Date == DateTime.Now.Date);
+
+                //res.ResultadosHoje = qry.Count(x => x.DataCriacao.Date == DateTime.Now.Date);
 
                 return res;
             }

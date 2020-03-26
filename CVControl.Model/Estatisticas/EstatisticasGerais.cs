@@ -4,8 +4,7 @@
     {
         public int TotalResultados { get; set; }
         public int ResultadosHoje { get; set; }
-        public int ResultadosRisco { get; set; }
-        public int ResultadoRiscoHoje { get; set; }
-
+        public int ResultadosAltoRisco { get; set; }
+        public int ResultadoBaixoRisco { get; set; }
     }
 }
