@@ -54,11 +54,11 @@ namespace CVControl.Data
             //    .WithMany(e => e.Clientes)
             //    .Map(m => m.ToTable("Favoritos").MapLeftKey("IdCliente").MapRightKey("IdServico"));
 
-            //modelBuilder.Entity<Cliente>()
-            //    .HasMany(e => e.Empresas)
-            //    .WithMany(e => e.Clientes)
-            //    .Map(m => m.ToTable("ClienteEmpresa").MapLeftKey("IdCliente").MapRightKey("IdEmpresa"));
-            
+            modelBuilder.Entity<Resultado>()
+                .HasMany(e => e.Sintomas)
+                .WithMany(e => e.Resultados)
+                .Map(m => m.ToTable("SintomasResultados").MapLeftKey("IdResultado").MapRightKey("IdSintoma"));
+
             base.OnModelCreating(modelBuilder);
         }
 

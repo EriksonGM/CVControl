@@ -31,7 +31,7 @@ namespace CVControl.Data.Entidades
         public bool Medicacao { get; set; } 
         public bool Contacto { get; set; } 
         public bool Viagem { get; set; } 
-        public bool Sintomas { get; set; } 
-        public bool Gravida { get; set; } 
+        public bool Gravida { get; set; }
+        public virtual ICollection<Sintoma> Sintomas { get; set; }
     }
 }

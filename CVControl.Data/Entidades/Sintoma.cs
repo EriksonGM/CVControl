@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CVControl.Data.Entidades
 {
@@ -8,5 +9,7 @@ namespace CVControl.Data.Entidades
         public int IdSintomas { get; set; }
 
         public string Nome { get; set; }
+
+        public virtual List<Resultado> Resultados { get; set; }
     }
 }
