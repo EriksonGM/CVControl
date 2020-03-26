@@ -23,6 +23,7 @@ namespace CVControl.Application
                 cfg.AddProfile<MunicipioProfile>();
                 cfg.AddProfile<ProvinciaProfile>();
                 cfg.AddProfile<IntervaloIdadeProfile>();
+                cfg.AddProfile<IntervaloFilhosProfile>();
                 cfg.AddProfile<GeneroProfile>();
                 cfg.AddProfile<SintomaProfile>();
             });

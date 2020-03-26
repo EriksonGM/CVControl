@@ -69,8 +69,10 @@
     <Compile Include="Config.cs" />
     <Compile Include="EstadoCivilApp.cs" />
     <Compile Include="GeneroApp.cs" />
+    <Compile Include="IntervaloFilhosApp.cs" />
     <Compile Include="IntervaloIdadesApp.cs" />
     <Compile Include="Logs\SystemLog.cs" />
+    <Compile Include="Mappers\IntervaloFilhos.cs" />
     <Compile Include="Mappers\SintomaProfile.cs" />
     <Compile Include="Mappers\GeneroProfile.cs" />
     <Compile Include="Mappers\EstadoCivilProfile.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Mappers\ProvinciaProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProvinciaApp.cs" />
+    <Compile Include="ResultadoApp.cs" />
     <Compile Include="SintomaApp.cs" />
   </ItemGroup>
   <ItemGroup>
