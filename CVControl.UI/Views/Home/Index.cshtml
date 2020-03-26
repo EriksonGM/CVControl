@@ -120,34 +120,9 @@
                         <div class="spinner close align-items-center">
                             <div class="loader">Loading...</div>
                         </div>
-                        <!-- questions -->
-                        @*<div class="close question text-center justify-content-center flex-column">
-                                <div class="d-flex flex-column">
-                                    <small class="d-block text-center text-white-50"> 4 / 20 </small>
-                                    <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
-                                </div>
-                                <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
-                                    Agora fala um pouco mais sobre a sua febre. Faz tempo que você está com febre?
-                                </h3>
-                                <ul id="answers" class="list-unstyled w-50 mx-auto">
-                                    <li class="w-100 my-2">
-                                        <button class="btn btn-primary w-100" data-id="1"> ABC </button>
-                                    </li>
-                                    <li class="w-100 my-2">
-                                        <button class="btn btn-primary w-100" data-id="162"> ABC </button>
-                                    </li>
-                                    <li class="w-100 my-2">
-                                        <button class="btn btn-primary w-100" data-id="65"> ABC </button>
-                                    </li>
-                                    <li class="w-100">
-                                        <button class="btn btn-primary w-100" data-id="16"> ABC </button>
-                                    </li>
-                                </ul>
-                            </div>*@
-
 
                         <!-- Nome e Telefone -->
-                        <form class="close question text-center justify-content-center flex-column" id="questionOne" onsubmit="saveQuestionOne">
+                        <form class="close question text-center justify-content-center flex-column question-form" data-id="1" data-fields="nome, telefone">
                             <div class="d-flex flex-column">
                                 <small class="d-block text-center text-white-50"> 1 / 9 </small>
                                 <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
@@ -158,36 +133,17 @@
                             <ul id="answers" class="list-unstyled w-50 mx-auto">
                                 <li class="w-100 my-2">
                                     <label for="nome">Nome</label>
-                                    <input class="form-control" id="nome" required maxlength="50"/>
+                                    <input class="form-control" id="nome" required maxlength="50" />
                                 </li>
                                 <li class="w-100 my-2">
                                     <label for="telefone">Telefone</label>
-                                    <input class="form-control" id="telefone" required maxlength="9" pattern="\d{9}"/>
+                                    <input class="form-control" id="telefone" required maxlength="9" pattern="\d{9}" />
                                 </li>
                                 <li class="w-100 my-2">
                                     <button class="btn btn-primary w-100" type="submit"> Continuar </button>
                                 </li>
                             </ul>
                         </form>
-
-                        <!-- Estado civil -->
-                        <div class="close question text-center justify-content-center flex-column" id="questionTwo">
-                            <div class="d-flex flex-column">
-                                <small class="d-block text-center text-white-50"> 2 / 9 </small>
-                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
-                            </div>
-                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
-                                Qual é o seu estado civil?
-                            </h3>
-                            <ul id="answers" class="list-unstyled w-50 mx-auto">
-                                @foreach (var e in (List<EstadoCivilDTO>)ViewBag.EstadosCivis)
-                                {
-                                    <li class="w-100 my-2">
-                                        <button class="btn btn-primary w-100 saveQuestionTwo" data-id="@e.IdEstadoCivil">@e.Estado</button>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
 
                         <!-- Idade -->
                         <div class="close question text-center justify-content-center flex-column" id="questionThree">
@@ -202,14 +158,52 @@
                                 @foreach (var i in (List<IntervaloIdadeDTO>)ViewBag.Idades)
                                 {
                                     <li class="w-100 my-2">
-                                        <button class="btn btn-primary w-100 saveQuestionThree" data-id="@i.IdIntervaloIdade">@i.Intervalo</button>
+                                        <button class="btn btn-primary w-100 saveQuestion" data-next="4" data-fields="" data-id="@i.IdIntervaloIdade">@i.Intervalo</button>
                                     </li>
                                 }
                             </ul>
                         </div>
 
+                        <!-- Estado civil -->
+                        <div class="close question text-center justify-content-center flex-column" id="questionTwo">
+                            <div class="d-flex flex-column">
+                                <small class="d-block text-center text-white-50"> 2 / 9 </small>
+                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
+                            </div>
+                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
+                                Qual é o seu estado civil?
+                            </h3>
+                            <ul id="answers" class="list-unstyled w-50 mx-auto">
+                                @foreach (var e in (List<EstadoCivilDTO>)ViewBag.EstadosCivis)
+                                {
+                                    <li class="w-100 my-2">
+                                        <button class="btn btn-primary w-100 saveQuestion" data-next="3" data-fields="" data-id="@e.IdEstadoCivil">@e.Estado</button>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                        <!-- Quantidade de filhos -->
+                        @*<div class="close question text-center justify-content-center flex-column" id="questionThree">
+                            <div class="d-flex flex-column">
+                                <small class="d-block text-center text-white-50"> 3 / 9 </small>
+                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
+                            </div>
+                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
+                                A sua idade?
+                            </h3>
+                            <ul id="answers" class="list-unstyled w-50 mx-auto">
+                                @foreach (var i in (List<IntervaloIdadeDTO>)ViewBag.Idades)
+                                {
+                                    <li class="w-100 my-2">
+                                        <button class="btn btn-primary w-100 saveQuestion" data-next="4" data-id="@i.IdIntervaloIdade">@i.Intervalo</button>
+                                    </li>
+                                }
+                            </ul>
+                        </div>*@
+
                         <!-- Endereço -->
-                        <div class="close question text-center justify-content-center flex-column" id="questionFour">
+                        <form class="close question text-center justify-content-center flex-column question-form" data-fields="endereco, municipio" data-id="4">
                             <div class="d-flex flex-column">
                                 <small class="d-block text-center text-white-50"> 4 / 9 </small>
                                 <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
@@ -236,10 +230,10 @@
                                     </select>
                                 </li>
                                 <li class="w-100">
-                                    <button class="btn btn-primary w-100" data-id="16" id="saveQuestionFour"> Avanzar </button>
+                                    <button class="btn btn-primary w-100" data-id="16" id="saveQuestionFour"> Avançar </button>
                                 </li>
                             </ul>
-                        </div>
+                        </form>
 
                         <!-- Febres -->
                         <div class="close question text-center justify-content-center flex-column" id="questionFive">
@@ -252,10 +246,10 @@
                             </h3>
                             <ul id="answers" class="list-unstyled w-50 mx-auto">
                                 <li class="w-100 my-2">
-                                    <button class="btn btn-primary w-100" data-id="65"> Sim </button>
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="6" data-fields="" data-id="true"> Sim </button>
                                 </li>
                                 <li class="w-100">
-                                    <button class="btn btn-primary w-100" data-id="16"> Não </button>
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="6" data-fields="" data-id="false"> Não </button>
                                 </li>
                             </ul>
                         </div>
@@ -271,10 +265,10 @@
                             </h3>
                             <ul id="answers" class="list-unstyled w-50 mx-auto">
                                 <li class="w-100 my-2">
-                                    <button class="btn btn-primary w-100" data-id="65"> Sim </button>
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="7" data-fields="" data-id="true"> Sim </button>
                                 </li>
                                 <li class="w-100">
-                                    <button class="btn btn-primary w-100" data-id="16"> Não </button>
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="7" data-fields="" data-id="false"> Não </button>
                                 </li>
                             </ul>
                         </div>
@@ -290,10 +284,10 @@
                             </h3>
                             <ul id="answers" class="list-unstyled w-50 mx-auto">
                                 <li class="w-100 my-2">
-                                    <button class="btn btn-primary w-100" data-id="65"> Sim, tive contato </button>
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="8" data-fields="" data-id="true"> Sim, tive contato </button>
                                 </li>
                                 <li class="w-100">
-                                    <button class="btn btn-primary w-100" data-id="16"> Não tive contato ou não tenho certeza se tive </button>
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="8" data-fields="" data-id="false"> Não tive contato ou não tenho certeza se tive </button>
                                 </li>
                             </ul>
                         </div>
@@ -309,27 +303,28 @@
                             </h3>
                             <ul id="answers" class="list-unstyled w-50 mx-auto">
                                 <li class="w-100 my-2">
-                                    <button class="btn btn-primary w-100" data-id="65"> Sim </button>
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="9" data-fields="" data-id="true"> Sim </button>
                                 </li>
                                 <li class="w-100">
-                                    <button class="btn btn-primary w-100" data-id="16"> Não </button>
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="9" data-fields="" data-id="false"> Não </button>
                                 </li>
                             </ul>
                         </div>
 
                         <!-- Sintomas -->
-                        <form class="close question text-center justify-content-center flex-column" id="questionNine">
+                        <form class="close question text-center justify-content-center flex-column question-form" data-id="9">
                             @Html.AntiForgeryToken()
-                            <input type="hidden" value="" name=""/>
-                            <input type="hidden" value="" name=""/>
-                            <input type="hidden" value="" name=""/>
-                            <input type="hidden" value="" name=""/>
-                            <input type="hidden" value="" name=""/>
-                            <input type="hidden" value="" name=""/>
-                            <input type="hidden" value="" name=""/>
-                            <input type="hidden" value="" name=""/>
-                            <input type="hidden" value="" name=""/>
-                            <input type="hidden" value="" name=""/>
+                            <input type="hidden" value="" name="Nome" />
+                            <input type="hidden" value="" name="Telefone" />
+                            <input type="hidden" value="" name="Idade" />
+                            <input type="hidden" value="" name="Estado" />
+                            <input type="hidden" value="" name="Municipio" />
+                            <input type="hidden" value="" name="Endereco" />
+                            <input type="hidden" value="" name="Febres" />
+                            <input type="hidden" value="" name="Medicacao" />
+                            <input type="hidden" value="" name="Contacto" />
+                            <input type="hidden" value="" name="Viajens" />
+                            <input type="hidden" value="" name="Sintomas" />
 
                             <div class="d-flex flex-column">
                                 <small class="d-block text-center text-white-50"> 9 / 9 </small>
@@ -348,7 +343,7 @@
                                 }
 
                                 <li class="w-100 my-2">
-                                    <button class="btn btn-primary w-100" data-id="65"> Enviar </button>
+                                    <button class="btn btn-primary w-100" data-id="65" data-fields="sintimas"> Enviar </button>
                                 </li>
                             </ul>
                         </form>
@@ -365,9 +360,7 @@
     <script>
         $(document).ready(function () {
             $("#btn-start").click(function () {
-
                 $('.welcome').animate({ opacity: 0 }, 300).css({ display: 'none' });
-
                 showLoading();
 
                 setTimeout(function () {
@@ -376,132 +369,128 @@
                     showQuestionOne();
                 }, 500);
             });
-
-            //$('#answers li button').click(function () {
-            //    hideQuestion();
-            //    showLoading();
-            //    setTimeout(function () {
-            //        hideLoading();
-            //        showQuestion();
-            //    }, 500);
-            //});
-
-            $('#saveQuestionOne').click(function () {
-
-                hideQuestion();
-                showLoading();
-                setTimeout(function () {
-                    hideLoading();
-                    showQuestion(2);
-                }, 500);
-            });
-
-            $('.saveQuestionTwo').click(function () {
-
-                console.log($(this).data("id"));
-
-                //console.log(this.data("id"));
-
-                hideQuestion();
-                showLoading();
-                setTimeout(function () {
-                    hideLoading();
-                    showQuestion(3);
-                }, 500);
-            });
-
-            $('.saveQuestionThree').click(function () {
-
-                hideQuestion();
-                showLoading();
-                setTimeout(function () {
-                    hideLoading();
-                    showQuestion(4);
-                }, 500);
-            });
-
-            $('#saveQuestionFour').click(function () {
-
-                hideQuestion();
-                showLoading();
-                setTimeout(function () {
-                    hideLoading();
-                    showQuestion(5);
-                }, 500);
-            });
-            function showLoading() {
-                $('.spinner').animate({ opacity: 1 }, 300);
-                $('.spinner').delay(300).removeClass('close').addClass('d-flex');
+            
+            function showQuestionOne() {
+                $('.question-form[data-id="1"]').animate({ opacity: 1 }, 300);
+                $('.question-form[data-id="1"]').removeClass('close').addClass('d-flex');
             }
 
-            //function showQuestion() {
-            //    $('.question').animate({ opacity: 1 }, 300);
-            //    $('.question').removeClass('close').addClass('d-flex');
-            //}
+            $('.question-form').submit(function (e) {
+                e.preventDefault()
 
-            function showQuestion(question) {
+                hideQuestion();
+                showLoading();
 
-                switch (question) {
-                    case 1:
-                        $('#questionOne').animate({ opacity: 1 }, 300);
-                        $('#questionOne').removeClass('close').addClass('d-flex');
+                var answers = []
+
+                var fields = $(this).data('fields')
+
+                if (fields) {
+                    fields.split(',').forEach(function (field) {
+                        field = '#' + field.trim()
+                        answers.push($(field).val())
+                    }) 
+                }
+
+                // console.log(answers)
+
+                // console.log(Number($(this).data('id')) + 1)
+                var nextQuestion = Number($(this).data('id')) + 1
+                setTimeout(function () {
+                    hideLoading();
+                    showQuestion(nextQuestion, answers);
+                }, 500);
+            })
+
+            $('.saveQuestion').click(function () {
+
+                // console.log();
+                var answers = [$(this).data("id")]
+                // console.log(answers)
+                var nextQuestion = $(this).data("next")
+
+                hideQuestion();
+                showLoading();
+                setTimeout(function () {
+                    hideLoading();
+                    showQuestion(nextQuestion, answers);
+                }, 500);
+            });
+
+   
+            function showQuestion(question, answers = []) {
+               switch (question) {
+                   case 1:
+                        $('.question-form[data-id="1"]').animate({ opacity: 1 }, 300);
+                        $('.question-form[data-id="1"]').removeClass('close').addClass('d-flex');
                         break;
 
-                    case 2:
+                   case 2:
+                        $('input[name="Nome"]').val(answers[0])
+                        $('input[name="Telefone"]').val(answers[1])
+
                         $('#questionTwo').animate({ opacity: 1 }, 300);
                         $('#questionTwo').removeClass('close').addClass('d-flex');
                         break;
 
-                    case 3:
+                   case 3:
+                        $('input[name="Idade"]').val(answers[0])
+                        
                         $('#questionThree').animate({ opacity: 1 }, 300);
                         $('#questionThree').removeClass('close').addClass('d-flex');
                         break;
 
-                    case 4:
-                        $('#questionFour').animate({ opacity: 1 }, 300);
-                        $('#questionFour').removeClass('close').addClass('d-flex');
+                   case 4:
+                        $('input[name="Estado"]').val(answers[0])
+                        
+                        $('.question-form[data-id="4"]').animate({ opacity: 1 }, 300);
+                        $('.question-form[data-id="4"]').removeClass('close').addClass('d-flex');
                         break;
 
-                    case 5:
+                   case 5:
+                        $('input[name="Endereco"]').val(answers[0])
+                        $('input[name="Municipio"]').val(answers[1])
+                        
                         $('#questionFive').animate({ opacity: 1 }, 300);
                         $('#questionFive').removeClass('close').addClass('d-flex');
                         break;
 
-                    case 6:
+                   case 6:
+                        $('input[name="Febres"]').val(answers[0])
+                        
                         $('#questionSix').animate({ opacity: 1 }, 300);
                         $('#questionSix').removeClass('close').addClass('d-flex');
                         break;
 
-                    case 7:
+                   case 7:
+                        $('input[name="Medicacao"]').val(answers[0])
+
                         $('#questionSeven').animate({ opacity: 1 }, 300);
                         $('#questionSeven').removeClass('close').addClass('d-flex');
                         break;
 
-                    case 8:
+                   case 8:
+                        $('input[name="Contacto"]').val(answers[0])
+
                         $('#questionEight').animate({ opacity: 1 }, 300);
                         $('#questionEight').removeClass('close').addClass('d-flex');
                         break;
 
-                    case 9:
-                        $('#questionNine').animate({ opacity: 1 }, 300);
-                        $('#questionNine').removeClass('close').addClass('d-flex');
+                   case 9:
+                        $('input[name="Viajens"]').val(answers[0])
+                        // $('input[name="Sintomas"]').value = answers[0]
+
+                        $('.question-form[data-id="9"]').animate({ opacity: 1 }, 300);
+                        $('.question-form[data-id="9"]').removeClass('close').addClass('d-flex');
                         break;
 
                     default:
                 }
-
-
             }
 
-
-            function showQuestionOne() {
-                $('#questionOne').animate({ opacity: 1 }, 300);
-                $('#questionOne').removeClass('close').addClass('d-flex');
-            }
-
-            function showQuestionTwo() {
-                $('#questionTwo').animate({ opacity: 1 }, 300);
-                $('#questionTwo').removeClass('close').addClass('d-flex');
+            function showLoading() {
+                $('.spinner').animate({ opacity: 1 }, 300);
+                $('.spinner').delay(300).removeClass('close').addClass('d-flex');
             }
 
             function hideLoading() {
