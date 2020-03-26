@@ -46,7 +46,7 @@ namespace CVControl.Data.Migrations
             ctx.Sintomas.AddOrUpdate(x => x.IdSintomas,
                 new Sintoma { IdSintomas = 1, Nome = "Coriza" },
                 new Sintoma { IdSintomas = 2, Nome = "Nariz entupido" },
-                new Sintoma { IdSintomas = 3, Nome = "Cansaço" },
+                new Sintoma { IdSintomas = 3, Nome = "Espirros" },
                 new Sintoma { IdSintomas = 4, Nome = "Tosse" },
                 new Sintoma { IdSintomas = 5, Nome = "Dor de cabeça" },
                 new Sintoma { IdSintomas = 6, Nome = "Dores no corpo" },
