@@ -152,6 +152,30 @@
                                 <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
                             </div>
                             <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
+                                Informação pessoal?
+                            </h3>
+                            <!-- p class="w-50 mx-auto"> description here </!--p -->
+                            <ul id="answers" class="list-unstyled w-50 mx-auto">
+                                <li class="w-100 my-2">
+                                    <label for="nome">Nome</label>
+                                    <input class="form-control" id="nome" />
+                                </li>
+                                <li class="w-100 my-2">
+                                    <label for="telefone">Telefone</label>
+                                    <input class="form-control" id="telefone" />
+                                </li>
+                                <li class="w-100 my-2">
+                                    <button class="btn btn-primary w-100" data-id="65"> Continuar </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="close question text-center justify-content-center flex-column">
+                            <div class="d-flex flex-column">
+                                <small class="d-block text-center text-white-50"> 4 / 20 </small>
+                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
+                            </div>
+                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
                                 Qual é o seu estado civil?
                             </h3>
                             <!-- p class="w-50 mx-auto"> description here </!--p -->
@@ -171,12 +195,17 @@
                                 <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
                             </div>
                             <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
-                                Em que provincia se encontra?
+                                A sua licalização?
                             </h3>
                             <!-- p class="w-50 mx-auto"> description here </!--p -->
                             <ul id="answers" class="list-unstyled w-50 mx-auto">
                                 <li class="w-100 my-2">
-                                    <select class="form-control">
+                                    <label for="endereco">Endereço</label>
+                                    <textarea rows="3" id="endereco" class="form-control"></textarea>
+                                </li>
+                                <li class="w-100 my-2">
+                                    <label for="municipio">Municipio</label>
+                                    <select class="form-control" id="municipio">
                                         @foreach (var p in (List<ProvinciaDTO>)ViewBag.Provincias)
                                         {
                                             <optgroup label="@p.Nome"></optgroup>
@@ -185,7 +214,6 @@
                                                 <option value="@m.IdMunicipio">@m.Nome</option>
                                             }
                                         }
-
                                     </select>
                                 </li>
                             </ul>
