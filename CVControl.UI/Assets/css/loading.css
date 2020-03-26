@@ -54,9 +54,6 @@
 
 
 @media (max-width: 560px) {
-    html, body {
-        overflow-x: hidden !important;
-    }
 
     #start-page {
         height: unset !important;
