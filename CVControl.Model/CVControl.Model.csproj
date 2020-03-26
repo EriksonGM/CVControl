@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EstadoCivilDTO.cs" />
+    <Compile Include="GeneroDTO.cs" />
     <Compile Include="IntervaloIdadeDTO.cs" />
     <Compile Include="MunicipioDTO.cs" />
     <Compile Include="PerguntaDTO.cs" />

@@ -61,6 +61,7 @@
     <Compile Include="Entidades\Provincia.cs" />
     <Compile Include="Entidades\Resposta.cs" />
     <Compile Include="Entidades\Resultado.cs" />
+    <Compile Include="Entidades\Sintoma.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

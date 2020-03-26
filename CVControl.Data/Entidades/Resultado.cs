@@ -24,6 +24,8 @@ namespace CVControl.Data.Entidades
         [ForeignKey("IdGenero")]
         public Genero Genero { get; set; }
         public int IdIntervaloIdade { get; set; }
+        public string Endereco { get; set; }
+        public string Telefone { get; set; }
         public int Filhos { get; set; }
         public bool Febre { get; set; } 
         public bool Medicacao { get; set; } 

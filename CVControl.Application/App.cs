@@ -20,11 +20,10 @@ namespace CVControl.Application
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<EstadoCivilProfile>();
-                cfg.AddProfile<RespostaProfile>();
-                cfg.AddProfile<ResultadoProfile>();
                 cfg.AddProfile<MunicipioProfile>();
                 cfg.AddProfile<ProvinciaProfile>();
                 cfg.AddProfile<IntervaloIdadeProfile>();
+                cfg.AddProfile<GeneroProfile>();
             });
 
             mapper = config.CreateMapper();
