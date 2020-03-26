@@ -28,9 +28,10 @@ namespace CVControl.UI.Controllers
             _resultadoApp = new ResultadoApp();
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Provincias = _provinciaApp.ListarProvinciasComMunicipios();
+            ViewBag.Provincias = _provinciaApp.ListarProvincias();
 
             ViewBag.Idades = _intervaloIdadesApp.ListarIntervalos();
 
@@ -45,7 +46,14 @@ namespace CVControl.UI.Controllers
             return View();
         }
 
+        [HttpGet]
+        public JsonResult Municipios(int id)
+        {
+            return Json(_provinciaApp.ListarMunicipiosByIdProvincia(id), JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(ResultadoDTO model)
         {
             if (ModelState.IsValid)

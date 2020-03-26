@@ -65,10 +65,13 @@ namespace CVControl.Application
                     .AsNoTracking()
                     .AsQueryable();
 
-                res.TotalResultados = qry.Count();
+               
                 res.ResultadosHoje = qry.Count(x => x.DataCriacao > DateTime.Now.AddDays(-1));
 
+                res.TotalResultados = qry.Count();
+
                 res.ResultadoRiscoHoje = qry.Count(x => x.DataCriacao.Date == DateTime.Now.Date);
+
                 res.ResultadosHoje = qry.Count(x => x.DataCriacao.Date == DateTime.Now.Date);
 
                 return res;

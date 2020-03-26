@@ -9,13 +9,15 @@ namespace CVControl.Application
 {
     public class ProvinciaApp : App
     {
-        public List<ProvinciaDTO> ListarProvinciasComMunicipios()
+        public List<ProvinciaDTO> ListarProvincias()
         {
             var res = new List<ProvinciaDTO>();
 
             try
             {
-                var provincias = db.Provincias.Include(x => x.Municipios).ToList();
+                var provincias = db.Provincias
+                    //.Include(x => x.Municipios)
+                    .ToList();
 
                 res = mapper.Map<List<ProvinciaDTO>>(provincias);
 
@@ -28,5 +30,28 @@ namespace CVControl.Application
                 return res;
             }
         }
+
+        public List<MunicipioDTO> ListarMunicipiosByIdProvincia(int idProvincia)
+        {
+            var res = new List<MunicipioDTO>();
+
+            try
+            {
+                var municipios = db.Municipios
+                    .Where(x=>x.IdProvincia == idProvincia)
+                    .ToList();
+
+                res = mapper.Map<List<MunicipioDTO>>(municipios);
+
+                return res;
+
+            }
+            catch (Exception e)
+            {
+                SystemLog.Erro(e);
+                return res;
+            }
+        }
+
     }
 }
