@@ -10,6 +10,7 @@
     <title> COVID-19 </title>
     <link rel="stylesheet" href="~/Assets/css/sb-admin-2.min.css" />
     <link rel="stylesheet" href="~/Assets/css/loading.css" />
+    <link rel="stylesheet"href="~/Assets/plugins/fontawesome-free/css/all.min.css" />
     <style>
         * {
             margin: 0;
@@ -183,8 +184,46 @@
                             </ul>
                         </div>
 
-                        <!-- Quantidade de filhos -->
+                        <!-- Genero -->
                         <div class="close question text-center justify-content-center flex-column" id="questionFour">
+                            <div class="d-flex flex-column">
+                                <small class="d-block text-center text-white-50"> 3 / 9 </small>
+                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
+                            </div>
+                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
+                                Seu Gênero?
+                            </h3>
+                            <ul id="answers" class="list-unstyled w-50 mx-auto">
+                                @foreach (var i in (List<GeneroDTO>)ViewBag.Genero)
+                                {
+                                    <li class="w-100 my-2">
+                                        <button class="btn btn-primary w-100 saveQuestion" data-next="5" data-id="@i.IdGenero">@i.Nome</button>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                        <!-- Gravida -->
+                        <div class="close question text-center justify-content-center flex-column" id="questionFive">
+                            <div class="d-flex flex-column">
+                                <small class="d-block text-center text-white-50"> 3 / 9 </small>
+                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
+                            </div>
+                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
+                                Está gravida?
+                            </h3>
+                            <ul id="answers" class="list-unstyled w-50 mx-auto">
+                                <li class="w-100 my-2">
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="6" data-fields="" data-id="true"> Sim </button>
+                                </li>
+                                <li class="w-100">
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="6" data-fields="" data-id="false"> Não </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Quantidade de filhos -->
+                        <div class="close question text-center justify-content-center flex-column" id="questionSix">
                             <div class="d-flex flex-column">
                                 <small class="d-block text-center text-white-50"> 3 / 9 </small>
                                 <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
@@ -196,14 +235,14 @@
                                 @foreach (var i in (List<IntervaloFilhosDTO>)ViewBag.Filhos)
                                 {
                                     <li class="w-100 my-2">
-                                        <button class="btn btn-primary w-100 saveQuestion" data-next="5" data-id="@i.IdIntervaloFilhos">@i.Intervalo</button>
+                                        <button class="btn btn-primary w-100 saveQuestion" data-next="7" data-id="@i.IdIntervaloFilhos">@i.Intervalo</button>
                                     </li>
                                 }
                             </ul>
                         </div>
 
                         <!-- Endereço -->
-                        <form class="close question text-center justify-content-center flex-column question-form" data-fields="endereco, municipio" data-id="5">
+                        <form class="close question text-center justify-content-center flex-column question-form" data-fields="endereco, municipio" data-id="7">
                             <div class="d-flex flex-column">
                                 <small class="d-block text-center text-white-50"> 4 / 9 </small>
                                 <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
@@ -214,11 +253,11 @@
                             <ul id="answers" class="list-unstyled w-50 mx-auto">
                                 <li class="w-100 my-2">
                                     <label for="endereco">Endereço</label>
-                                    <textarea rows="3" id="endereco" class="form-control"></textarea>
+                                    <textarea rows="3" id="endereco" class="form-control" required></textarea>
                                 </li>
                                 <li class="w-100 my-2">
                                     <label for="municipio">Municipio</label>
-                                    <select class="form-control" id="municipio">
+                                    <select class="form-control" id="municipio" required>
                                         @foreach (var p in (List<ProvinciaDTO>)ViewBag.Provincias)
                                         {
                                             <optgroup label="@p.Nome"></optgroup>
@@ -236,7 +275,7 @@
                         </form>
 
                         <!-- Febres -->
-                        <div class="close question text-center justify-content-center flex-column" id="questionSix">
+                        <div class="close question text-center justify-content-center flex-column" id="questionEight">
                             <div class="d-flex flex-column">
                                 <small class="d-block text-center text-white-50"> 5 / 9 </small>
                                 <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
@@ -246,60 +285,22 @@
                             </h3>
                             <ul id="answers" class="list-unstyled w-50 mx-auto">
                                 <li class="w-100 my-2">
-                                    <button class="btn btn-primary w-100 saveQuestion" data-next="7" data-fields="" data-id="true"> Sim </button>
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="9" data-fields="" data-id="true"> Sim </button>
                                 </li>
                                 <li class="w-100">
-                                    <button class="btn btn-primary w-100 saveQuestion" data-next="7" data-fields="" data-id="false"> Não </button>
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="9" data-fields="" data-id="false"> Não </button>
                                 </li>
                             </ul>
                         </div>
 
                         <!-- Medicação -->
-                        <div class=" close question text-center justify-content-center flex-column" id="questionSeven">
+                        <div class=" close question text-center justify-content-center flex-column" id="questionNine">
                             <div class="d-flex flex-column">
                                 <small class="d-block text-center text-white-50"> 6 / 9 </small>
                                 <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
                             </div>
                             <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
                                 Ja tomou alguma medicação?
-                            </h3>
-                            <ul id="answers" class="list-unstyled w-50 mx-auto">
-                                <li class="w-100 my-2">
-                                    <button class="btn btn-primary w-100 saveQuestion" data-next="8" data-fields="" data-id="true"> Sim </button>
-                                </li>
-                                <li class="w-100">
-                                    <button class="btn btn-primary w-100 saveQuestion" data-next="8" data-fields="" data-id="false"> Não </button>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Contactos -->
-                        <div class="close question text-center justify-content-center flex-column" id="questionEight">
-                            <div class="d-flex flex-column">
-                                <small class="d-block text-center text-white-50"> 7 / 9 </small>
-                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
-                            </div>
-                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
-                                Teve contato com alguém que resultou positivo para Coronavírus ou que tenha suspeita de estar infectado?
-                            </h3>
-                            <ul id="answers" class="list-unstyled w-50 mx-auto">
-                                <li class="w-100 my-2">
-                                    <button class="btn btn-primary w-100 saveQuestion" data-next="9" data-fields="" data-id="true"> Sim, tive contato </button>
-                                </li>
-                                <li class="w-100">
-                                    <button class="btn btn-primary w-100 saveQuestion" data-next="9" data-fields="" data-id="false"> Não tive contato ou não tenho certeza se tive </button>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Viajens internacionais -->
-                        <div class="close question text-center justify-content-center flex-column" id="questionNine">
-                            <div class="d-flex flex-column">
-                                <small class="d-block text-center text-white-50"> 8 / 9 </small>
-                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
-                            </div>
-                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
-                                Você realizou alguma viagem internacional recentemente?
                             </h3>
                             <ul id="answers" class="list-unstyled w-50 mx-auto">
                                 <li class="w-100 my-2">
@@ -311,22 +312,46 @@
                             </ul>
                         </div>
 
-                        <!-- Sintomas -->
-                        <form class="close question text-center justify-content-center flex-column question-form" data-id="10">
-                            @Html.AntiForgeryToken()
-                            <input type="hidden" value="" name="Nome" />
-                            <input type="hidden" value="" name="Telefone" />
-                            <input type="hidden" value="" name="Idade" />
-                            <input type="hidden" value="" name="Estado" />
-                            <input type="hidden" value="" name="Filhos" />
-                            <input type="hidden" value="" name="Municipio" />
-                            <input type="hidden" value="" name="Endereco" />
-                            <input type="hidden" value="" name="Febres" />
-                            <input type="hidden" value="" name="Medicacao" />
-                            <input type="hidden" value="" name="Contacto" />
-                            <input type="hidden" value="" name="Viajens" />
-                            <input type="hidden" value="" name="Sintomas" />
+                        <!-- Contactos -->
+                        <div class="close question text-center justify-content-center flex-column" id="questionTen">
+                            <div class="d-flex flex-column">
+                                <small class="d-block text-center text-white-50"> 7 / 9 </small>
+                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
+                            </div>
+                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
+                                Teve contato com alguém que resultou positivo para Coronavírus ou que tenha suspeita de estar infectado?
+                            </h3>
+                            <ul id="answers" class="list-unstyled w-50 mx-auto">
+                                <li class="w-100 my-2">
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="11" data-fields="" data-id="true"> Sim, tive contato </button>
+                                </li>
+                                <li class="w-100">
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="11" data-fields="" data-id="false"> Não tive contato ou não tenho certeza se tive </button>
+                                </li>
+                            </ul>
+                        </div>
 
+                        <!-- Viajens internacionais -->
+                        <div class="close question text-center justify-content-center flex-column" id="questionEleven">
+                            <div class="d-flex flex-column">
+                                <small class="d-block text-center text-white-50"> 8 / 9 </small>
+                                <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
+                            </div>
+                            <h3 id="app--question" class="font-weight-bold w-50 mx-auto mb-4 text-black">
+                                Você realizou alguma viagem internacional recentemente?
+                            </h3>
+                            <ul id="answers" class="list-unstyled w-50 mx-auto">
+                                <li class="w-100 my-2">
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="12" data-fields="" data-id="true"> Sim </button>
+                                </li>
+                                <li class="w-100">
+                                    <button class="btn btn-primary w-100 saveQuestion" data-next="12" data-fields="" data-id="false"> Não </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Sintomas -->
+                        <form class="close question text-center justify-content-center flex-column submit-form" data-id="12">
                             <div class="d-flex flex-column">
                                 <small class="d-block text-center text-white-50"> 9 / 9 </small>
                                 <small class="d-block text-center font-weight-bold text-danger"> COVID-19 </small>
@@ -339,15 +364,45 @@
                                 @foreach (var s in (List<SintomaDTO>)ViewBag.Sintomas)
                                 {
                                     <li class="w-100 my-2 text-left">
-                                        <input type="checkbox" class="mr-2" name="sintimas" id="@($"sintoma{s.IdSintomas}")" value="@s.IdSintomas" /><label for="@($"sintoma{s.IdSintomas}")">@s.Nome</label>
+                                        <input type="checkbox" class="mr-2" name="sintomas" id="@($"sintoma{s.IdSintomas}")" value="@s.IdSintomas" /><label for="@($"sintoma{s.IdSintomas}")">@s.Nome</label>
                                     </li>
                                 }
 
                                 <li class="w-100 my-2">
-                                    <button class="btn btn-primary w-100" data-id="65" data-fields="sintimas"> Enviar </button>
+                                    <button class="btn btn-primary w-100" data-id="65" type="submit"> Enviar </button>
                                 </li>
                             </ul>
                         </form>
+                        <form class="close hidden-form">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" value="" name="Nome" />
+                            <input type="hidden" value="" name="Telefone" />
+                            <input type="hidden" value="" name="IdIntervaloIdade" />
+                            <input type="hidden" value="" name="IdEstadoCivil" />
+                            <input type="hidden" value="" name="IdIntervaloFilhos" />
+                            <input type="hidden" value="" name="Gravida" />
+                            <input type="hidden" value="2" name="IdGenero" />
+                            <input type="hidden" value="" name="IdMunicipio" />
+                            <input type="hidden" value="" name="Endereco" />
+                            <input type="hidden" value="" name="Febre" />
+                            <input type="hidden" value="" name="Medicacao" />
+                            <input type="hidden" value="" name="Contacto" />
+                            <input type="hidden" value="" name="Viagem" />
+                            <input type="hidden" value="" name="IdSintomas" />
+                        </form>
+
+                        <!-- sucess -->
+                        <div class="close question success text-center justify-content-center flex-column">
+                            <i class="fa fa-check-circle fa-6x text-success mb-2"></i>
+                            <h4> Muito obrigado por concluir o inquerito</h4>
+                            <p> As informações foram enviadas com sucesso!</p>
+                        </div>
+
+                        <div class="close question error-screen text-center justify-content-center flex-column">
+                            <i class="fa fa-ban fa-6x text-danger mb-2"></i>
+                            <h4> Não foi possível enviar o inquerito! </h4>
+                            <p> Lamentamos, o ocorrido 😞... Estamos a trabalhar para corrigir!</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -393,9 +448,6 @@
                     }) 
                 }
 
-                // console.log(answers)
-
-                // console.log(Number($(this).data('id')) + 1)
                 var nextQuestion = Number($(this).data('id')) + 1
                 setTimeout(function () {
                     hideLoading();
@@ -405,10 +457,13 @@
 
             $('.saveQuestion').click(function () {
 
-                // console.log();
                 var answers = [$(this).data("id")]
-                // console.log(answers)
                 var nextQuestion = $(this).data("next")
+
+                if (nextQuestion === 5 && answers[0] === 2) {
+                    nextQuestion = 6
+                    answers = [false]
+                }
 
                 hideQuestion();
                 showLoading();
@@ -418,6 +473,48 @@
                 }, 500);
             });
 
+
+            $('.submit-form').submit(function (e) {
+                e.preventDefault()
+
+                var checkedSintomas = []
+
+                $('input[name="sintomas"]').each((i, item) => {
+                    if ($(item).prop('checked')) {
+                        checkedSintomas.push($(item).val())
+                    }
+                })
+
+                $('input[name="IdSintomas"]').val(checkedSintomas)
+
+                submit();
+
+            })
+
+            function submit() {
+                hideQuestion()
+                showLoading()
+                var serializedForm = getFormData($('.hidden-form'))
+
+                serializedForm.IdSintomas = serializedForm.IdSintomas.split(',').map(item => Number(item))
+                console.log(serializedForm)
+                $.ajax({
+                    method: 'POST',
+                    url: '/',
+                    data: serializedForm
+                }).then(function (data) {
+                    if (data.Exito) {
+                        $('.question.success').animate({ opacity: 1 }, 300);
+                        $('.question.success').removeClass('close').addClass('d-flex');
+                    } else {
+                        $('.question.error-screen').animate({ opacity: 1 }, 300);
+                        $('.question.error-screen').removeClass('close').addClass('d-flex');
+                    }
+                })
+                .always(function () {
+                    hideLoading()
+                })
+            }
    
             function showQuestion(question, answers = []) {
                switch (question) {
@@ -435,61 +532,75 @@
                         break;
 
                    case 3:
-                        $('input[name="Idade"]').val(answers[0])
+                        $('input[name="IdIntervaloIdade"]').val(answers[0])
                         
                         $('#questionThree').animate({ opacity: 1 }, 300);
                         $('#questionThree').removeClass('close').addClass('d-flex');
                         break;
 
                    case 4:
-                        $('input[name="Estado"]').val(answers[0])
+                        $('input[name="IdEstadoCivil"]').val(answers[0])
                         
                         $('#questionFour').animate({ opacity: 1 }, 300);
                         $('#questionFour').removeClass('close').addClass('d-flex');
                        break;
 
                    case 5:
-                        $('input[name="Filhos"]').val(answers[0])
+                        $('input[name="IdGenero"]').val(answers[0])
                         
-                        $('.question-form[data-id="5"]').animate({ opacity: 1 }, 300);
-                        $('.question-form[data-id="5"]').removeClass('close').addClass('d-flex');
+                        $('#questionFive').animate({ opacity: 1 }, 300);
+                        $('#questionFive').removeClass('close').addClass('d-flex');
                         break;
 
-                   case 6:
-                        $('input[name="Endereco"]').val(answers[0])
-                        $('input[name="Municipio"]').val(answers[1])
+                    case 6:
+                        $('input[name="Gravida"]').val(answers[0])
                         
                         $('#questionSix').animate({ opacity: 1 }, 300);
                         $('#questionSix').removeClass('close').addClass('d-flex');
-                        break;
+                       break;
 
                    case 7:
-                        $('input[name="Febres"]').val(answers[0])
+                        $('input[name="IdIntervaloFilhos"]').val(answers[0])
                         
-                        $('#questionSeven').animate({ opacity: 1 }, 300);
-                        $('#questionSeven').removeClass('close').addClass('d-flex');
+                        $('.question-form[data-id="7"]').animate({ opacity: 1 }, 300);
+                        $('.question-form[data-id="7"]').removeClass('close').addClass('d-flex');
                         break;
 
                    case 8:
-                        $('input[name="Medicacao"]').val(answers[0])
-
+                        $('input[name="Endereco"]').val(answers[0])
+                        $('input[name="IdMunicipio"]').val(answers[1])
+                        
                         $('#questionEight').animate({ opacity: 1 }, 300);
                         $('#questionEight').removeClass('close').addClass('d-flex');
                         break;
 
                    case 9:
-                        $('input[name="Contacto"]').val(answers[0])
-
+                        $('input[name="Febre"]').val(answers[0])
+                        
                         $('#questionNine').animate({ opacity: 1 }, 300);
                         $('#questionNine').removeClass('close').addClass('d-flex');
                         break;
 
                    case 10:
-                        $('input[name="Viajens"]').val(answers[0])
+                        $('input[name="Medicacao"]').val(answers[0])
+
+                        $('#questionTen').animate({ opacity: 1 }, 300);
+                        $('#questionTen').removeClass('close').addClass('d-flex');
+                        break;
+
+                   case 11:
+                        $('input[name="Contacto"]').val(answers[0])
+
+                        $('#questionEleven').animate({ opacity: 1 }, 300);
+                        $('#questionEleven').removeClass('close').addClass('d-flex');
+                        break;
+
+                   case 12:
+                        $('input[name="Viagem"]').val(answers[0])
                         // $('input[name="Sintomas"]').value = answers[0]
 
-                        $('.question-form[data-id="10"]').animate({ opacity: 1 }, 300);
-                        $('.question-form[data-id="10"]').removeClass('close').addClass('d-flex');
+                        $('.submit-form').animate({ opacity: 1 }, 300);
+                        $('.submit-form').removeClass('close').addClass('d-flex');
                         break;
 
                     default:
@@ -508,6 +619,17 @@
             function hideQuestion() {
                 $('.question').animate({ opacity: 0 }, 300);
                 $('.question').removeClass('d-flex').addClass('close');
+            }
+
+            function getFormData($form){
+                var unindexed_array = $form.serializeArray();
+                var indexed_array = {};
+
+                $.map(unindexed_array, function(n, i){
+                    indexed_array[n['name']] = n['value'];
+                });
+
+                return indexed_array;
             }
         })
     </script>
