@@ -173,6 +173,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\EstatisticasController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ExportarController.cs" />
     <Compile Include="Areas\Admin\Controllers\InicioController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1980,6 +1981,7 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Inicio\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Estatisticas\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Exportar\Index.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\Desenvolvimento %28Local%29.pubxml" />
     <None Include="Web.Desenvolvimento.config">
