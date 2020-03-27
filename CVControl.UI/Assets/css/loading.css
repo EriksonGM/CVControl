@@ -25,7 +25,6 @@
 
 .lgo {
     left: 12px;
-    top: -31%;
 }
 
 @-webkit-keyframes load8 {
@@ -53,7 +52,35 @@
 }
 
 
+@media (max-width: 960px) {
+    .portal-name {
+        font-size: 30px !important;
+        margin-top: 20px !important;
+        width: 50% !important;
+    }
+
+    .lgo {
+        position: relative !important;
+        left: 0;
+    }
+
+    header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    header {
+        flex-direction: column !important;
+    }
+}
+
 @media (max-width: 560px) {
+
+    html, body {
+        overflow: unset !important;
+    }
 
     #start-page {
         height: unset !important;
@@ -80,27 +107,9 @@
         margin-top: 3rem !important;
     }
 
-
-    header {
-        flex-direction: column !important;
-    }
-}
-
-@media (max-width: 960px) {
-    .lgo {
-        position: relative !important;
-        height: 180px !important;
+    .portal-name {
+        font-size: 24px !important;
+        width: 70% !important;
     }
 
-    header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        top: -40px;
-    }
-
-    header img:last-child {
-        height: 70px !important;
-    }
 }
