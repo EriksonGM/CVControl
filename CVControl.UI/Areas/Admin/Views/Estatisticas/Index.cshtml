@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "Estatisticas";
+}
+
+<style>
+    .chart-body {
+        height: 300px
+    }
+</style>
+<div class="row">
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body chart-body" >
+                <canvas id="genero"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body chart-body">
+                <canvas id="estadoCivil"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body chart-body">
+                <canvas id="idade"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body chart-body">
+                <canvas id="filhos"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body" style="height: 400px">
+                <canvas id="provincia"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Assets/plugins/chart.js/Chart.min.js"></script>
+<script>
+    var ctxGenero = document.getElementById("genero");
+    var generos = new Chart(ctxGenero, {
+        type: 'pie',
+        data: @Html.Raw(ViewBag.Genero),
+        options: {
+            maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    left: 5,
+                    right: 5,
+                    top: 5,
+                    bottom: 5
+                }
+            }
+        }
+    });
+
+    var ctxCivil = document.getElementById("estadoCivil");
+    var estadoCivil = new Chart(ctxCivil, {
+        type: 'pie',
+        data: @Html.Raw(ViewBag.EstadoCivil),
+        options: {
+            maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    left: 5,
+                    right: 5,
+                    top: 5,
+                    bottom: 5
+                }
+            }
+        }
+    });
+
+    var ctxIdade = document.getElementById("idade");
+    var estadoCivil = new Chart(ctxIdade, {
+        type: 'pie',
+        data: @Html.Raw(ViewBag.Idade),
+        options: {
+            maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    left: 5,
+                    right: 5,
+                    top: 5,
+                    bottom: 5
+                }
+            }
+        }
+    });
+
+    var ctxFilhos = document.getElementById("filhos");
+    var filhos = new Chart(ctxFilhos, {
+        type: 'pie',
+        data: @Html.Raw(ViewBag.Filhos),
+        options: {
+            maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    left: 5,
+                    right: 5,
+                    top: 5,
+                    bottom: 5
+                }
+            }
+        }
+    });
+
+    var ctxProvincia = document.getElementById("provincia");
+    var filhos = new Chart(ctxProvincia, {
+        type: 'bar',
+        data: @Html.Raw(ViewBag.Provincia),
+        options: {
+            maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    left: 5,
+                    right: 5,
+                    top: 5,
+                    bottom: 5
+                }
+            },
+            scales: {
+                xAxes: [{
+                    stacked: true
+                }],
+                yAxes: [{
+                    stacked: true
+                }]
+            }
+        }
+    });
+</script>

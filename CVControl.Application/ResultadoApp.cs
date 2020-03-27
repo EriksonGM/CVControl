@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CVControl.Application.Charts;
 using CVControl.Application.Logs;
 using CVControl.Data.Entidades;
 using CVControl.Model;
 using CVControl.Model.Charts;
 using CVControl.Model.Estatisticas;
+using DonutDataSet = CVControl.Application.Charts.DonutDataSet;
+using LineDataSet = CVControl.Application.Charts.LineDataSet;
 
 namespace CVControl.Application
 {
@@ -96,11 +100,11 @@ namespace CVControl.Application
             }
         }
 
-        public object GerarData()
+        public object GerarDataHistorico()
         {
             try
             {
-                var data = new Model.Charts.Data();
+                var data = new Charts.Data();
 
                 var connString = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
 
@@ -114,18 +118,17 @@ namespace CVControl.Application
 
                     var reader = cmd.ExecuteReader();
 
-                    
-
-                    var dsTotal = new DataSet
+                    var dsTotal = new LineDataSet
                     {
                         label = "Resultados diarios",
-                        
                     };
 
-                    var dsAltoRisco = new DataSet
+                    var dsAltoRisco = new LineDataSet
                     {
                         label = "Alto risco",
-                        borderColor = "red"
+                        borderColor = "red",
+                        pointBorderColor = "red",
+                        pointBackgroundColor = "red"
                     };
 
                     if (reader.HasRows)
@@ -140,7 +143,6 @@ namespace CVControl.Application
 
                     data.datasets.Add(dsTotal);
                     data.datasets.Add(dsAltoRisco);
-
                 }
 
                 return data;
@@ -151,5 +153,271 @@ namespace CVControl.Application
                 return null;
             }
         }
+
+        public object GerarDataGenero()
+        {
+            try
+            {
+                var data = new Charts.Data();
+
+                var connString = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
+
+                var qry = @"Select g.Nome as Genero, Count(*) as Total from Resultado r inner join Genero g on r.IdGenero = g.IdGenero Group By g.Nome Order By g.Nome";
+
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    var cmd = new SqlCommand(qry, conn);
+
+                    conn.Open();
+
+                    var reader = cmd.ExecuteReader();
+                    
+                    var dsGenero = new DonutDataSet()
+                    {
+                        label = "Generos",
+                        backgroundColor = new List<string>
+                        {
+                            Color.Pink.Name, Color.DodgerBlue.Name
+                        },
+                        hoverBackgroundColor = new List<string>
+                        {
+                            Color.Pink.Name, Color.DodgerBlue.Name
+                        }
+                    };
+
+                    if (reader.HasRows)
+                        while (reader.Read())
+                        {
+                            data.labels.Add(reader["Genero"].ToString());
+                            dsGenero.data.Add(Convert.ToInt32(reader["Total"]));
+                        }
+
+                    conn.Close();
+
+                    data.datasets.Add(dsGenero);
+                }
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                SystemLog.Erro(e);
+                return null;
+            }
+        }
+
+        public object GerarDataEstadoCivil()
+        {
+            try
+            {
+                var data = new Charts.Data();
+
+                var connString = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
+
+                var qry = @"Select ec.Estado as Estado, COUNT(*) as Total from Resultado r inner join EstadoCivil ec on r.IdEstadoCivil = ec.IdEstadoCivil Group by ec.Estado Order By ec.Estado ";
+
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    var cmd = new SqlCommand(qry, conn);
+
+                    conn.Open();
+
+                    var reader = cmd.ExecuteReader();
+
+                    var dsEstadoCivilo = new DonutDataSet()
+                    {
+                        label = "Estado Civil",
+                        backgroundColor = new List<string>
+                        {
+                            Color.DodgerBlue.Name, Color.DarkGray.Name,Color.Moccasin.Name,Color.DarkSalmon.Name,Color.Wheat.Name
+                        },
+                        hoverBackgroundColor = new List<string>
+                        {
+                            Color.DodgerBlue.Name, Color.DarkGray.Name,Color.Moccasin.Name,Color.DarkSalmon.Name,Color.Wheat.Name
+                        }
+                    };
+
+                    if (reader.HasRows)
+                        while (reader.Read())
+                        {
+                            data.labels.Add(reader["Estado"].ToString());
+                            dsEstadoCivilo.data.Add(Convert.ToInt32(reader["Total"]));
+                        }
+
+                    conn.Close();
+
+                    data.datasets.Add(dsEstadoCivilo);
+                }
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                SystemLog.Erro(e);
+                return null;
+            }
+        }
+
+        public object GerarDataIdade()
+        {
+            try
+            {
+                var data = new Charts.Data();
+
+                var connString = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
+
+                var qry = @"Select ii.Intervalo as Intervalo, COUNT(*) as Total from Resultado r inner join IntervaloIdade ii on r.IdIntervaloIdade = ii.IdIntervaloIdade Group By ii.Intervalo, ii.IdIntervaloIdade Order By ii.IdIntervaloIdade";
+
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    var cmd = new SqlCommand(qry, conn);
+
+                    conn.Open();
+
+                    var reader = cmd.ExecuteReader();
+
+                    var ds = new DonutDataSet()
+                    {
+                        label = "Estado Civil",
+                        backgroundColor = new List<string>
+                        {
+                           "#e1bcc3", "#a1cde8","#757da4","#b9e5e8","#c6b6d1"
+                        },
+                        hoverBackgroundColor = new List<string>
+                        {
+                            "#e1bcc3", "#a1cde8","#757da4","#b9e5e8","#c6b6d1"
+                        }
+                    };
+
+                    if (reader.HasRows)
+                        while (reader.Read())
+                        {
+                            data.labels.Add(reader["Intervalo"].ToString());
+                            ds.data.Add(Convert.ToInt32(reader["Total"]));
+                        }
+
+                    conn.Close();
+
+                    data.datasets.Add(ds);
+                }
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                SystemLog.Erro(e);
+                return null;
+            }
+        }
+
+        public object GerarDataFilhos()
+        {
+            try
+            {
+                var data = new Charts.Data();
+
+                var connString = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
+
+                var qry = @"Select ifi.Intervalo, COUNT(*) as Total from Resultado r inner join IntervaloFilhos ifi on r.IdIntervaloFilhos = ifi.IdIntervaloFilhos group by ifi.Intervalo, ifi.IdIntervaloFilhos Order By ifi.IdIntervaloFilhos";
+
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    var cmd = new SqlCommand(qry, conn);
+
+                    conn.Open();
+
+                    var reader = cmd.ExecuteReader();
+
+                    var ds = new DonutDataSet()
+                    {
+                        label = "Estado Civil",
+                        backgroundColor = new List<string>
+                        {
+                            "#e1bcc3", "#a1cde8","#757da4","#b9e5e8","#c6b6d1"
+                        },
+                        hoverBackgroundColor = new List<string>
+                        {
+                            "#e1bcc3", "#a1cde8","#757da4","#b9e5e8","#c6b6d1"
+                        }
+                    };
+
+                    if (reader.HasRows)
+                        while (reader.Read())
+                        {
+                            data.labels.Add(reader["Intervalo"].ToString());
+                            ds.data.Add(Convert.ToInt32(reader["Total"]));
+                        }
+
+                    conn.Close();
+
+                    data.datasets.Add(ds);
+                }
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                SystemLog.Erro(e);
+                return null;
+            }
+        }
+
+        public object GerarDataProvincias()
+        {
+            try
+            {
+                var data = new Charts.Data();
+
+                var connString = ConfigurationManager.ConnectionStrings["Conn"].ConnectionString;
+
+                var qry = @"Select p.Nome as Provincia, COUNT(*)  as Total, SUM(Case When (Febre = 1 and Viagem = 1 and Contacto = 1) then 1 else 0 End) as AltoRisco from Resultado r inner join Municipio m on r.IdMunicipio = m.IdMunicipio inner join Provincia p on m.IdProvincia = p.IdProvincia Group by p.Nome, p.IdProvincia Order By p.IdProvincia";
+
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    var cmd = new SqlCommand(qry, conn);
+
+                    conn.Open();
+
+                    var reader = cmd.ExecuteReader();
+
+                    var ds = new BarDataSet
+                    {
+                        label = "Reportes",
+                        backgroundColor = "#e1bcc3",
+                        hoverBackgroundColor = "#b9e5e8"
+                    };
+
+                    var dsRisco = new BarDataSet
+                    {
+                        label = "Reportes de Risco",
+                        backgroundColor = Color.Brown.Name,
+                        hoverBackgroundColor = Color.Red.Name
+                    };
+
+                    if (reader.HasRows)
+                        while (reader.Read())
+                        {
+                            data.labels.Add(reader["Provincia"].ToString());
+
+
+                            ds.data.Add(Convert.ToInt32(reader["Total"]));
+                            dsRisco.data.Add(Convert.ToInt32(reader["AltoRisco"]));
+                        }
+
+                    conn.Close();
+
+                    data.datasets.Add(ds);
+                    data.datasets.Add(dsRisco);
+                }
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                SystemLog.Erro(e);
+                return null;
+            }
+        }
+
     }
 }

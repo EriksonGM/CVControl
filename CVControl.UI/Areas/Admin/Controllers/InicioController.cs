@@ -19,7 +19,7 @@ namespace CVControl.UI.Areas.Admin.Controllers
         
         public ActionResult Index()
         {
-            ViewBag.Data = JsonConvert.SerializeObject(_resultadoApp.GerarData()); ;
+            ViewBag.Data = JsonConvert.SerializeObject(_resultadoApp.GerarDataHistorico()); ;
 
             return View(_resultadoApp.CalcularEstatisticas());
         }
