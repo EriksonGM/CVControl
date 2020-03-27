@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CVControl.Application;
+using Newtonsoft.Json;
 
 namespace CVControl.UI.Areas.Admin.Controllers
 {
@@ -18,6 +19,7 @@ namespace CVControl.UI.Areas.Admin.Controllers
         
         public ActionResult Index()
         {
+            ViewBag.Data = JsonConvert.SerializeObject(_resultadoApp.GerarData()); ;
 
             return View(_resultadoApp.CalcularEstatisticas());
         }

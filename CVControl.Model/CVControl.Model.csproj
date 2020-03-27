@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Charts\Data.cs" />
     <Compile Include="EstadoCivilDTO.cs" />
     <Compile Include="Estatisticas\EstatisticasGerais.cs" />
     <Compile Include="GeneroDTO.cs" />

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using CVControl.Application;
 using CVControl.Model;
+using Newtonsoft.Json;
 
 namespace CVControl.UI.Controllers
 {
@@ -42,6 +43,8 @@ namespace CVControl.UI.Controllers
             ViewBag.Filhos = _intervaloFilhosApp.ListarIntervalos();
 
             ViewBag.Genero = _generoApp.ListarGeneros();
+
+            
 
             return View();
         }
